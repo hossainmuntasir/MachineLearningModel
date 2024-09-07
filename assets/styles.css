@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Metrophobic&display=swap');
+body {
+    background: rgb(10,214,13);
+    background: linear-gradient(90deg, rgba(40,214,13,1) 40%, rgba(0,125,255,1) 80%);
+    font-family: "Metrophobic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 { 
+    text-align: center;
+}
+
