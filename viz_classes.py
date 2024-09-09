@@ -12,8 +12,8 @@ class BarChartCreator:
         self.mark2_color = px.colors.qualitative.Plotly[2]
         self.line_color = 'black'
         self.line_thick = 0.5
-        self.opacity1 = 1
-        self.opacity2 = 1
+        self.opacity1 = 0.6
+        self.opacity2 = 0.6
         
         self._fig = self.update_fig(df, building_no, date_range)
         
@@ -51,10 +51,10 @@ class BarChartCreator:
     def update_fig(self, df, building_no, date_range=None):
         df = df[(df.building_no==building_no)&(df.Fan_status=='On')]
         if date_range is not None:
-            df = df[(df.Datetime.dt.date>=date_range[0])&(df.Datetime.dt.date<date_range[1])]
+            temp = pd.Series(pd.to_datetime(df.Datetime, errors='coerce'), index=df.index, name='Datetime')
+            df = df[(temp.dt.date>=date_range[0])&(temp.dt.date<date_range[1])]
            
         zones = df.Zone_name.unique()
-         
         fig = go.Figure()
         
         for zone in zones:
@@ -66,6 +66,8 @@ class BarChartCreator:
                     x=[zone],
                     y=[temp.Fan_time_diff.sum()],
                     marker=dict(
+                        cornerradius=5,
+                        opacity=self.opacity1,
                         color=self.mark1_color,
                         line=dict(
                             color=self.line_color,
@@ -81,7 +83,10 @@ class BarChartCreator:
                 go.Bar(
                     x=[zone],
                     y=[temp.Predicted.sum()],
+                    width=0.65,
                     marker=dict(
+                        cornerradius=5,
+                        opacity=self.opacity2,
                         color=self.mark2_color,
                         line=dict(
                             color=self.line_color,
@@ -107,12 +112,20 @@ class BarChartCreator:
             name='Predicted',
             marker=dict(color=self.mark2_color)
         ))
-            
+        
         # Add axis titles
         fig.update_layout(
             xaxis=dict(title=f'<b>Building {self.building_no} Zones</b>'), 
             yaxis=dict(title=f'<b>Total Time Fan On (mins)</b>'), 
-            barmode='overlay')
+            barmode='overlay',
+            margin=dict(l=50, r=50, t=50, b=50),
+            legend=dict(
+                orientation='h',
+                x=1,
+                y=1,
+                xanchor='right',
+                yanchor='bottom'
+            ))
         
         return fig
     
@@ -193,7 +206,7 @@ class LineChartCreator:
             'month': temp.dt.to_period('M').apply(lambda r: r.start_time).dt.date
         }
         df = df.groupby(['building_no','Zone_name','Season','Faulty','Fan_status',group_mapping[agg]])[['Fan_time_diff','Predicted']].sum().reset_index().sort_values(by='Datetime')
-         
+        
         fig = go.Figure()
             
         # Add main plots
@@ -244,10 +257,17 @@ class LineChartCreator:
         # Add axis titles
         agg_map = {'day':'Daily', 'week':'Weekly', 'month':'Monthly'}
         fig.update_layout(
-            xaxis=dict(title=f'<b>{self.zone_name} All time Fan Usage</b>'), 
+            xaxis=dict(title=f'<b>{zone_name} All time Fan Usage</b>'), 
             yaxis=dict(title=f'<b>Total {agg_map[agg]} Fan On Time (mins)</b>'),
-            hovermode='x unified'
-            )
+            hovermode='x unified',
+            margin=dict(l=50, r=50, t=50, b=50),
+            legend=dict(
+                orientation='h',
+                x=1,
+                y=1,
+                xanchor='right',
+                yanchor='bottom'
+            ))
         
         return fig
     
@@ -296,11 +316,21 @@ class PieChartCreator:
         # Add main plots
         fig.add_trace(
             go.Pie(
-                labels=['Savings','Predicted Fan Usage'],
+                labels=['Savings','Regular Usage'],
                 values=[df.Fan_time_diff.sum()-df.Predicted.sum(),df.Predicted.sum()],
                 hole=0.2,
                 pull=[0, 0.1]
             )
         )
+        
+        fig.update_layout(
+            margin=dict(l=50, r=50, t=50, b=50),
+            legend=dict(
+                orientation='h',
+                x=0.5,
+                y=1,
+                xanchor='center',
+                yanchor='bottom'
+            ))
         
         return fig
