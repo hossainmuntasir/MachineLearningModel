@@ -64,7 +64,7 @@ class BarChartCreator:
             fig.add_trace(
                 go.Bar(
                     x=[zone],
-                    y=[temp.Fan_time_diff.sum()],
+                    y=[temp.Fan_time_diff.sum()/3600],
                     marker=dict(
                         cornerradius=5,
                         opacity=self.opacity1,
@@ -82,7 +82,7 @@ class BarChartCreator:
             fig.add_trace(
                 go.Bar(
                     x=[zone],
-                    y=[temp.Predicted.sum()],
+                    y=[temp.Predicted.sum()/3600],
                     width=0.65,
                     marker=dict(
                         cornerradius=5,
@@ -116,7 +116,7 @@ class BarChartCreator:
         # Add axis titles
         fig.update_layout(
             xaxis=dict(title=f'<b>Building {self.building_no} Zones</b>'), 
-            yaxis=dict(title=f'<b>Total Time Fan On (mins)</b>'), 
+            yaxis=dict(title=f'<b>Total Time Fan On (hours)</b>'), 
             barmode='overlay',
             margin=dict(l=50, r=50, t=50, b=50),
             legend=dict(
