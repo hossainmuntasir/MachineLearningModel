@@ -1,0 +1,9 @@
+notebook
+seaborn
+scikit-learn
+openpyxl
+pyarrow
+plotly
+sqlalchemy
+PyMySQL[rsa]
+tqdm
