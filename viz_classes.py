@@ -8,8 +8,8 @@ class BarChartCreator:
         self._building_no = building_no
         self._date_range = date_range
         
-        self.mark1_color = px.colors.qualitative.Plotly[1]
-        self.mark2_color = px.colors.qualitative.Plotly[2]
+        self.mark1_color = '#EF4343'
+        self.mark2_color = '#73EF42'
         self.line_color = 'black'
         self.line_thick = 0.5
         self.opacity1 = 0.6
@@ -115,11 +115,20 @@ class BarChartCreator:
         
         # Add axis titles
         fig.update_layout(
-            xaxis=dict(title=f'<b>Building {self.building_no} Zones</b>'), 
-            yaxis=dict(title=f'<b>Total Time Fan On (hours)</b>'), 
+            xaxis=dict(
+                title=f'<b>Building {self.building_no} Zones</b>',
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')), 
+            yaxis=dict(
+                title=f'<b>Total Time Fan On (hours)</b>',
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')), 
+            plot_bgcolor='#181A20',
+            paper_bgcolor='#181A20',
             barmode='overlay',
             margin=dict(l=50, r=50, t=50, b=50),
             legend=dict(
+                font=dict(color='white'),
                 orientation='h',
                 x=1,
                 y=1,
@@ -136,8 +145,8 @@ class LineChartCreator:
         self._date_range = date_range
         self._zone_name = zone_name
         
-        self.line1_color = px.colors.qualitative.Plotly[1]
-        self.line2_color = px.colors.qualitative.Plotly[2]
+        self.line1_color = '#EF4343'
+        self.line2_color = '#73EF42'
         self.marker_thick = 6
         self.marker_line_color = 'black'
         self.line_thick = 0.5
@@ -257,11 +266,18 @@ class LineChartCreator:
         # Add axis titles
         agg_map = {'day':'Daily', 'week':'Weekly', 'month':'Monthly'}
         fig.update_layout(
-            xaxis=dict(title=f'<b>{zone_name} All time Fan Usage</b>'), 
-            yaxis=dict(title=f'<b>Total {agg_map[agg]} Fan On Time (mins)</b>'),
+            xaxis=dict(title=f'<b>{zone_name} All time Fan Usage</b>',
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')), 
+            yaxis=dict(title=f'<b>Total {agg_map[agg]} Fan On Time (mins)</b>',
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')),
             hovermode='x unified',
+            plot_bgcolor='#181A20',
+            paper_bgcolor='#181A20',
             margin=dict(l=50, r=50, t=50, b=50),
             legend=dict(
+                font=dict(color='white'),
                 orientation='h',
                 x=1,
                 y=1,
@@ -325,7 +341,10 @@ class PieChartCreator:
         
         fig.update_layout(
             margin=dict(l=50, r=50, t=50, b=50),
+            plot_bgcolor='#181A20',
+            paper_bgcolor='#181A20',
             legend=dict(
+                font=dict(color='white'),
                 orientation='h',
                 x=0.5,
                 y=1,

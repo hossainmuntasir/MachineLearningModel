@@ -1,23 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Metrophobic&display=swap');
 body {
-    background: #F1F1F1;
+    background: #181A20;
     font-family: "Metrophobic", sans-serif;
     font-weight: 400;
     font-style: normal;
+    color:white;
 }
 
 h1 { 
     text-align: center;
 }
 
-/* #table {
+#table {
     margin: 0px 0px 0px 0px;
     width:100%;
     height:100%;
-} */
+}
 
 #table_wrapper {
     padding-bottom:30px;
     text-align:center;
 }
 
+#agg-type {
+    color: white !important;
+}
+
+.Select-control {
+    background-color: #222 !important;
+    color: white !important;
+}
+
+.Select-input {
+    color: white;
+}
+
+.Select.is-focused > .Select-control {
+    background-color: #222;
+}
+
+#school-input {
+    color: white;
+}
+
+.Select-value {
+    color: white;
+}
+
+.Select-value-label {
+    color: white;
+}
+
+.VirtualizedSelectOption {
+    background-color: #222;
+    color: white;
+ }
+
+.VirtualizedSelectFocusedOption {
+    background-color: #222;
+    opacity: .7;
+}
+
+.Select.is-focused:not(.is-open) > .Select-control {
+    background-color: #222;
+    border-color: var(--primary); 
+    box-shadow: none;
+}
