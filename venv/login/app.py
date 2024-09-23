@@ -2,13 +2,14 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
-from dashboard import create_building_dashboards,create_modelevaluation_dashboard
+from dashboard import create_modelevaluation_dashboards,create_modelcomparison_dashboard
  
  
 app = Flask(__name__)
+building_no = 3
 
-create_building_dashboards(app)
-create_modelevaluation_dashboard(app)
+create_modelevaluation_dashboards(app)
+create_modelcomparison_dashboard(app, building_no)
  
 app.secret_key = 'your secret key'
  
