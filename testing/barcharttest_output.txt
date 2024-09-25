@@ -1,0 +1,8 @@
+test_filtering (__main__.TestBarChartCreator) ... ok
+test_layout (__main__.TestBarChartCreator) ... ok
+test_traces (__main__.TestBarChartCreator) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.668s
+
+OK

@@ -1,0 +1,10 @@
+test_check_filtering (__main__.TestLineChart) ... ok
+test_groupby_day (__main__.TestLineChart) ... ok
+test_groupby_month (__main__.TestLineChart) ... ok
+test_groupby_week (__main__.TestLineChart) ... ok
+test_traces (__main__.TestLineChart) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.574s
+
+OK
