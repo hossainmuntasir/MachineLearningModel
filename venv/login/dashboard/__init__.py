@@ -15,5 +15,5 @@ def create_modelevaluation_dashboards(server):
 def create_modelcomparison_dashboard(server, building_no):
     df = pd.read_parquet("dashboard/model_comparison_test_data.parquet")
     model = load('dashboard/trained_RFC.joblib')
-    dashboard = ModelComparisonDashboard(df, building_no, model, server, '/model-comparison/')
+    dashboard = ModelComparisonDashboard(df, building_no, model, server, '/modelevaluation/')
     return dashboard.app
