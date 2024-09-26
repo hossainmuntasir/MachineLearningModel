@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Machine Learning Model</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/styles.css">
+                          
+    </head>
+    <body>
+        
+      <!-- Navigation Bar -->
+      <div class="navbar">
+        <a class="navbar" href="#">Hello, {{ session.username }}!</a>
+        <a href="/index">Home</a>
+        <a href="/model-comparison">Model Evaluation</a>
+        <a href="/building-1">Building 1</a>
+        <a href="/building-2">Building 2</a>
+        <a href="/building-3">Building 3</a>
+        <a href="/about_us">About us</a>
+        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+      </div>
+
+      <!-- Hero Section -->
+      <section id="hero" class="text-center">
+        <div class="container">
+            <h1>Machine Learning Model for Building Performance Optimisation</h1>
+            <p>Harnessing Machine Learning to Drive Energy Efficiency and Environmental Impact</p>
+            <div class="video-container">
+                <iframe width="60%" height="400" src="https://www.youtube.com/embed/RXmEBXS3UCs?si=-DrtwltdymfgVAYt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <a href="#overview" class="btn btn-outline-light mt-4">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Project Overview Section -->
+    <section id="overview" class="p-5 bg-white">
+        <div class="container">
+            <h2 class="text-primary">About the Project</h2>
+            <p>This project leverages the power of AI and machine learning to optimize building performance, ensuring sustainability and efficiency.</p>
+            
+            <!-- Storytelling and Action Buttons in Sequence -->
+            <div class="mt-4">
+                <h3>Model Comparison</h3>
+                <p>Compare the performance of machine learning models (i.e. Random Forest, Logistic Regression) used in optimizing building efficiency.</p>
+                <a href="/model-comparison" class="btn btn-primary mb-3">View Model Comparison</a>
+            </div>
+            
+            <div class="mt-4">
+                <h3>Building 1 Prediction</h3>
+                <p>Explore how our models predict cost savings for Building 1.</p>
+                <a href="/building-1" class="btn btn-primary mb-3">Explore Building 1</a>
+            </div>
+
+            <div class="mt-4">
+                <h3>Building 2 Prediction</h3>
+                <p>See the predicted cost savings for Building 2 based on our advanced models.</p>
+                <a href="/building-2" class="btn btn-primary mb-3">Explore Building 2</a>
+            </div>
+
+            <div class="mt-4">
+                <h3>Building 3 Prediction</h3>
+                <p>Discover the potential savings for Building 3 through our AI-driven analysis.</p>
+                <a href="/building-3" class="btn btn-primary mb-3">Explore Building 3</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <p>&copy; Machine Learning Model for Optimising Building Efficiency</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Smooth Scroll Script -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    </body>
+</html>

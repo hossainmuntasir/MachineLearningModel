@@ -1,0 +1,9 @@
+notebook
+seaborn
+scikit-learn
+openpyxl
+pyarrow
+plotly
+tqdm
+dash-bootstrap-components
+flask_mysqldb

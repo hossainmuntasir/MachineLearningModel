@@ -1,0 +1,104 @@
+.jumbotron {
+    background-color: #1068c6; 
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 18px;
+    font-size: 15px;
+}
+
+.navbar a {
+    color: white;
+    padding: 5px 20px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    background : linear-gradient(135deg, #2e8b57, #007acc);
+    color: #fff;
+    border-radius: 32px;
+    transition: 0.3s;
+
+
+}
+
+
+#hero {
+    background: linear-gradient(135deg, #2e8b57, #007acc);
+    color: white;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+#hero .btn-outline-light {
+    padding: 10px 30px;
+    border-radius: 50px;
+}
+/*
+/ Overview Section /
+#overview h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#overview .container {
+    max-width: 900px;
+}
+
+#overview h3 {
+    font-size: 1.5rem;
+    color: #007acc;
+}
+
+#overview p {
+    margin-bottom: 15px;
+}
+
+#overview .btn {
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+/ Footer Styles /
+footer {
+    background: linear-gradient(135deg, #2e8b57, #007acc);
+    color: white;
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/ Button Hover Effect /
+.btn-primary:hover {
+    background-color: #005a99;
+    border-color: #005a99;
+    transition: 0.3s;
+}
+
+/ Spacing Improvements */
+.video-container {
+    margin-top: 30px;}
