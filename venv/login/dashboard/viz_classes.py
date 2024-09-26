@@ -343,14 +343,23 @@ class BarChartCreator:
             name='Predicted',
             marker=dict(color=self.mark2_color)
         ))
-        
+
         # Add axis titles
         fig.update_layout(
-            xaxis=dict(title=f'<b>Building {self.building_no} Zones</b>'), 
-            yaxis=dict(title=f'<b>Total Time Fan On (hours)</b>'), 
+            xaxis=dict(
+            title=f'<b>Building {self.building_no} Zones</b>',
+            tickfont=dict(color='white'),
+            titlefont=dict(color='white')), 
+            yaxis=dict(
+            title=f'<b>Total Time Fan On (hours)</b>',
+            tickfont=dict(color='white'),
+            titlefont=dict(color='white')), 
+            plot_bgcolor='#181A20',
+            paper_bgcolor='#181A20',
             barmode='overlay',
             margin=dict(l=50, r=50, t=50, b=50),
             legend=dict(
+                font=dict(color='white'),
                 orientation='h',
                 x=1,
                 y=1,
@@ -484,15 +493,22 @@ class LineChartCreator:
             x0=date_range[0], x1=date_range[1], y0=0, y1=1,
             fillcolor=self.shading_color, opacity=0.2, layer='below', line_width=0,
         )
-            
+
         # Add axis titles
         agg_map = {'day':'Daily', 'week':'Weekly', 'month':'Monthly'}
         fig.update_layout(
-            xaxis=dict(title=f'<b>{zone_name} All time Fan Usage</b>'), 
-            yaxis=dict(title=f'<b>Total {agg_map[agg]} Fan On Time (mins)</b>'),
+            xaxis=dict(title=f'<b>{zone_name} All time Fan Usage</b>',
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')), 
+            yaxis=dict(title=f'<b>Total {agg_map[agg]} Fan On Time (mins)</b>',
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')),
             hovermode='x unified',
+            plot_bgcolor='#181A20',
+            paper_bgcolor='#181A20',
             margin=dict(l=50, r=50, t=50, b=50),
             legend=dict(
+                font=dict(color='white'),
                 orientation='h',
                 x=1,
                 y=1,
@@ -556,7 +572,10 @@ class PieChartCreator:
         
         fig.update_layout(
             margin=dict(l=50, r=50, t=50, b=50),
+            plot_bgcolor='#181A20',
+            paper_bgcolor='#181A20',
             legend=dict(
+                font=dict(color='white'),
                 orientation='h',
                 x=0.5,
                 y=1,
