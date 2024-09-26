@@ -35,7 +35,7 @@ def login():
             session['id'] = account['id']
             session['username'] = account['username']
             msg = 'Logged in successfully !'
-            return render_template('index.html', msg = msg)
+            return redirect('/index')
         else:
             msg = 'Incorrect username / password !'
     return render_template('login.html', msg = msg)
@@ -73,20 +73,32 @@ def register():
         msg = 'Please fill out the form !'
     return render_template('register.html', msg = msg)
 
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
 @app.route('/model-comparison')
 def model_comparison():
+    if "username" not in session:
+        return redirect('/login')
     return render_template('model_comparison.html')
 
 @app.route('/building-1')
 def building_1():
+    if "username" not in session:
+        return redirect('/login')
     return render_template('building_1.html')
 
 @app.route('/building-2')
 def building_2():
+    if "username" not in session:
+        return redirect('/login')
     return render_template('building_2.html')
 
 @app.route('/building-3')
 def building_3():
+    if "username" not in session:
+        return redirect('/login')
     return render_template('building_3.html')
 
 @app.route('/about_us')
