@@ -1,6 +1,4 @@
 output/*/building*
-validated_data/*
-!validated_data/README.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
