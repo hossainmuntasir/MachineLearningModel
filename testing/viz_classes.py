@@ -1,6 +1,235 @@
 import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
+import datetime 
+from sklearn.metrics import confusion_matrix
+
+class ConfusionMatrixCreator:
+    def __init__(self, df):
+        self.df = df.copy()
+        self.fig = self.update_fig()
+        
+    def update_plot_styling(self):
+        pass
+    
+    def update_fig(self):
+        # df = self.df.copy()
+        cm = confusion_matrix(self.df.Fan_status, self.df.Predicted, labels=['On', 'Off'])
+
+        TP = cm[0][0]
+        FP = cm[0][1]
+        FN = cm[1][0]
+        TN = cm[1][1]
+
+        TPR = TP / (TP + FN)
+        FNR = FN / (FN + TP)
+        FPR = FP / (FP + TN)
+        TNR = TN / (TN + FP)
+
+        # Create confusion matrix with TPR, FNR, FPR, TNR
+        cm = [[TPR, FNR], [FPR, TNR]]
+
+        # Create the heatmap
+        fig = go.Figure(
+            go.Heatmap(
+                z=cm,
+                x=['On', 'Off'],
+                y=['On', 'Off'],
+                colorscale='blues',
+                showscale=False))
+
+        # Add text annotations to each cell
+        for i in range(len(['On', 'Off'])):
+            for j in range(len(['On', 'Off'])):
+                fig.add_annotation(
+                    x=['On', 'Off'][j], y=['On', 'Off'][i],
+                    text=str(round(cm[i][j], 4)),
+                    showarrow=False,
+                    font=dict(color='white' if cm[i][j] >0.5 else 'black')
+                )
+
+        # Update layout
+        fig.update_layout(
+            width=500,
+            height=400,
+            # title='<b>Confusion Matrix</b>',
+            margin=dict(t=10,l=10,r=10,b=10),
+            yaxis=dict(
+                title='<b>Actual</b>',
+                autorange='reversed',
+                tickfont=dict(size=15)
+            ),
+            xaxis=dict(
+                side='top',
+                title='<b>Predicted</b>',
+                tickfont=dict(size=15)
+            )
+        )
+
+        return fig
+
+class FeatureImportanceCreator:
+    def __init__(self, model):
+        self.model = model
+        self.fig = self.update_fig()
+    
+    def update_fig(self):
+        fis = pd.DataFrame(zip(self.model.feature_names_in_, self.model.feature_importances_), columns=['Features','Score'])
+        fis = fis.sort_values('Score')
+        fig = px.bar(fis, x='Score', y='Features', orientation='h')
+        fig.update_layout(
+            # title='<b>Feature Importance</b>', 
+            height=400,
+            margin=dict(t=10,l=10,r=10,b=10))
+        return fig
+
+class ScatterPlotCreator:
+    def __init__(self, df, date):
+        self.df = df.copy()
+        self.fig = self.update_fig(date)
+        
+    @staticmethod
+    def generate_pastel_colors_plotly(num_colors):
+        # Get the 'pastel' color scale from Plotly
+        pastel_colors_scale = px.colors.qualitative.Pastel
+        
+        # Calculate the number of colors to sample from the scale
+        num_samples = int((num_colors + len(pastel_colors_scale) - 1) / len(pastel_colors_scale))
+        
+        # Sample colors from the scale
+        pastel_colors = pastel_colors_scale * num_samples
+        
+        return pastel_colors[:num_colors]
+
+    @staticmethod
+    def get_hover_text(df):
+        text = []
+        for (_, row) in df.iterrows():
+            buil_string = f'<b>Building {row.building_no}</b><br><br>'
+            name_string = f'<b>Zone:</b> {row.Zone_name}<br>'
+            date_string = f'<b>Date:</b> {row.Date.strftime("%Y-%m-%d")}<br>'
+            time_string = f'<b>Time:</b> {row.Time}<br>'
+            ztem_string = f'<b>Zone temp:</b> {round(row.Zone_temp,2)}<br>'
+            stem_string = f'<b>Slab temp:</b> {round(row.Slab_temp, 2)}'
+            text.append(buil_string+name_string+date_string+time_string+ztem_string+stem_string)
+        return text
+
+    def update_fig(self, date, zone=None, time=None):
+        if not isinstance(date, datetime.date):
+            date = pd.Timestamp(date).date()
+            
+        dfo = self.df[(self.df.Datetime.dt.date==date)]
+        
+        zone = [zone] if type(zone) == str else zone
+        if (zone):
+            dfo = dfo[(dfo.Zone_name.isin(zone))]
+        if (time):
+            dfo = dfo[(dfo.Datetime.dt.hour>=time[0])&(dfo.Datetime.dt.hour<time[1])]
+
+        # break df down into all possible outcomes
+        a = dfo[(dfo.Fan_status=='On')&(dfo.Predicted=='On')]
+        b = dfo[(dfo.Fan_status=='Off')&(dfo.Predicted=='Off')]
+        c = dfo[(dfo.Fan_status=='On')&(dfo.Predicted=='Off')]
+        d = dfo[(dfo.Fan_status=='Off')&(dfo.Predicted=='On')]
+
+        # initalise figure
+        fig = go.Figure()
+        
+        # create symbol and color maps
+        symbols_map = {'On':'circle', 'Off':'cross'}
+        colors = ScatterPlotCreator.generate_pastel_colors_plotly(dfo.Zone_name.nunique())
+        colors_map = {val:color for val,color in zip(dfo.Zone_name.unique(), colors)}
+        colorby_dict = {val:val for val in dfo.Zone_name.unique()}
+        
+        # mapping for explaining symbols for all possible outcomes
+        keys = ['Fan ON, Prediction On', 'Fan OFF, Prediction OFF', 'Fan ON, Prediction OFF', 'Fan OFF, Prediction ON']
+        symbols = ['circle','cross','circle','cross']
+        
+        # for each of the possible outcomes
+        for i, dfs in enumerate([a,b,c,d]):
+            # add empty trace to apply key to legend
+            fig.add_trace(
+                go.Scattergl(
+                    x=[None],
+                    y=[None],
+                    name=keys[i],
+                    mode='markers',
+                    # legendgroup=keys[i],
+                    legendgroup='keys',
+                    legendgrouptitle_text='<b>Keys</b>',
+                    marker=dict(
+                        symbol=symbols[i],
+                        size=12,
+                        color='lightgrey',
+                        line=dict(
+                            width=1,
+                            color='black' if i>1 else 'lightgrey'
+                        )
+                    )
+                )
+            )
+            # add trace with data to plot
+            for val in dfs.Zone_name.unique():            
+                temp = dfs[dfs.Zone_name==val]
+                hover_text = ScatterPlotCreator.get_hover_text(temp)
+                fig.add_trace(
+                    go.Scattergl(
+                        x=temp.x,
+                        y=temp.y,
+                        text=hover_text,
+                        hoverinfo='text',
+                        name=f'Fan: {dfs.Fan_status.unique()[0]}, Prediction: {dfs.Predicted.unique()[0]}',
+                        showlegend=False,
+                        mode='markers',
+                        opacity=0.6,
+                        marker=dict(
+                            size=10,
+                            color=colors_map[val],
+                            symbol=symbols_map[dfs.Fan_status.unique()[0]],
+                            line=dict(
+                                width=1 if i>1 else 1,
+                                color='black' if i>1 else 'grey'
+                            )
+                        )
+                    )
+                )
+            # end loop
+
+        # for each of the different colors used in the plot
+        for val in sorted(dfo.Zone_name.unique()):
+            # add empty trace to apply color info to legend
+            fig.add_trace(
+                go.Scattergl(
+                    x=[None],
+                    y=[None],
+                    mode='markers',
+                    name=f'{colorby_dict[val]}',
+                    # legendgroup=f'{colorby_dict[val]}',
+                    legendgroup='Zone_name',
+                    legendgrouptitle_text='<b>Zone Name</b>',
+                    marker=dict(
+                        symbol='square',
+                        size=12,
+                        color=colors_map[val],
+                        line=dict(
+                            width=1,
+                            color='white'
+                        )
+                    )
+                )
+            )
+
+        fig.update_layout(
+            xaxis=dict(showticklabels=False), 
+            yaxis=dict(showticklabels=False), 
+            margin=dict(t=10,l=10,r=10,b=10),
+            hoverlabel=dict(align='left'), 
+            height=600,
+            legend=dict(
+                x=-0.01, 
+                xanchor='right',)
+            )
+        return fig
 
 class BarChartCreator:
     def __init__(self, df, building_no, date_range=None):

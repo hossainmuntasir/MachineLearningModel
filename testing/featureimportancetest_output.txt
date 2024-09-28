@@ -1,0 +1,8 @@
+test_feature_importance_values (__main__.TestFeatureImportance) ... ok
+test_features (__main__.TestFeatureImportance) ... ok
+test_vis_length (__main__.TestFeatureImportance) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.135s
+
+OK

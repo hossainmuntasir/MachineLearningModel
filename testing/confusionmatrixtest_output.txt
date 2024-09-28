@@ -1,0 +1,6 @@
+test_metric_calculation (__main__.TestConfusionMatrix) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.535s
+
+OK
