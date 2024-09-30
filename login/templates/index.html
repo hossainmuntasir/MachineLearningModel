@@ -13,7 +13,7 @@
       <!-- Navigation Bar -->
       <div class="navbar">
         <a class="navbar" href="#">Hello, {{ session.username }}!</a>
-        <a href="/index">Home</a>
+        <a href="/index" class="active">Home</a>
         <a href="/model-comparison">Model Evaluation</a>
         <a href="/building-1">Building 1</a>
         <a href="/building-2">Building 2</a>
@@ -42,26 +42,28 @@
             
             <!-- Storytelling and Action Buttons in Sequence -->
             <div class="mt-4">
-                <h3>Model Comparison</h3>
-                <p>Compare the performance of machine learning models (i.e. Random Forest, Logistic Regression) used in optimizing building efficiency.</p>
-                <a href="/model-comparison" class="btn btn-primary mb-3">View Model Comparison</a>
+                <h3>Model Evaluation</h3>
+                <p>The "Model Evaluation" page provides a comprehensive overview of the machine learning model's performance used in optimizing building efficiency. It includes visualizations such as feature importance, which shows which factors have the most significant impact on the predictions, and a confusion matrix, which measures the accuracy of the model in predicting fan operation.
+
+                 <br>   Additionally, the page includes a scatter plot of building data that visualizes the relationship between actual and predicted fan statuses across different zones. Users can explore these predictions by interacting with filter options, allowing them to select specific zones, dates, and time ranges. The filters help users easily analyze patterns in fan usage, identify misclassifications, and better understand the factors influencing energy savings across various areas of the building. <br> <p>
+                <a href="/model-comparison" class="btn btn-primary mb-3">ML Model Analytics Platform</a>
             </div>
             
             <div class="mt-4">
-                <h3>Building 1 Prediction</h3>
-                <p>Explore how our models predict cost savings for Building 1.</p>
+                <h3>Building 1 </h3>
+                <p>The "Building 1" page provides an analysis of fan usage across different zones in Building 1, comparing actual and predicted fan-on times. It includes bar charts, line graphs, and pie charts that illustrate energy savings, usage trends, and performance efficiency, allowing users to assess the impact of optimization over time specifically for Building 1.<br></p>
                 <a href="/building-1" class="btn btn-primary mb-3">Explore Building 1</a>
             </div>
 
             <div class="mt-4">
-                <h3>Building 2 Prediction</h3>
-                <p>See the predicted cost savings for Building 2 based on our advanced models.</p>
+                <h3>Building 2 </h3>
+                <p>The "Building 2" page provides an analysis of fan usage across different zones in Building 1, comparing actual and predicted fan-on times. It includes bar charts, line graphs, and pie charts that illustrate energy savings, usage trends, and performance efficiency, allowing users to assess the impact of optimization over time specifically for Building 2.<br></p>
                 <a href="/building-2" class="btn btn-primary mb-3">Explore Building 2</a>
             </div>
 
             <div class="mt-4">
-                <h3>Building 3 Prediction</h3>
-                <p>Discover the potential savings for Building 3 through our AI-driven analysis.</p>
+                <h3>Building 3 </h3>
+                <p>The "Building 3" page provides an analysis of fan usage across different zones in Building 1, comparing actual and predicted fan-on times. It includes bar charts, line graphs, and pie charts that illustrate energy savings, usage trends, and performance efficiency, allowing users to assess the impact of optimization over time specifically for Building 3.<br></p>
                 <a href="/building-3" class="btn btn-primary mb-3">Explore Building 3</a>
             </div>
         </div>
@@ -85,6 +87,8 @@
                 });
             });
         });
+
     </script>
+    
     </body>
 </html>

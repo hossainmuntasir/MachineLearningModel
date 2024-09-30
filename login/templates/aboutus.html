@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 2em 0;
+        }
+
+        .group-photo {
+            text-align: center;
+            margin-bottom: 2em;
+        }
+
+        .group-photo img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 2em;
+            margin-bottom: 2em;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 2em;
+        }
+
+        .member-details {
+            max-width: 600px;
+        }
+
+        .member-details h3 {
+            margin: 0 0 0.5em;
+        }
+
+        .member-details p {
+            margin: 0.5em 0;
+            font-size: 0.95em;
+            color: #666;
+        }
+
+        .contact-links a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 1em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+     <!-- Navigation Bar -->
+     <div class="navbar">
+        <a class="navbar" href="#">Hello, {{ session.username }}!</a>
+        <a href="/index" class="active">Home</a>
+        <a href="/model-comparison">Model Evaluation</a>
+        <a href="/building-1">Building 1</a>
+        <a href="/building-2">Building 2</a>
+        <a href="/building-3">Building 3</a>
+        <a href="/about_us">About us</a>
+        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+      </div>
+
+    <div class="container">
+        <h1>About Us</h1>
+        <div class="group-photo">
+            <img src="https://drive.google.com/file/d/1hlbF5xEDtM3O3z403gfn7xCqGa_eOyGs/view?usp=drivesdk" alt="Our Team Photo">
+        </div>
+        <p>We are a team of passionate individuals working together to leverage AI and machine learning for building performance optimization. Meet our team:</p>
+
+        <div class="team-member">
+            <img src="images/member1.jpg" alt="Member 1" class="member-image">
+            <div class="member-details">
+                <h3>Member 1 Name</h3>
+                <p><strong>Major:</strong> Computer Science</p>
+                <p>I specialize in machine learning models and data analytics, and I focus on improving energy efficiency through data-driven insights.</p>
+                <div class="contact-links">
+                    <a href="https://linkedin.com/in/member1" target="_blank">LinkedIn</a>
+                    <a href="mailto:member1@example.com">Email</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <img src="images/member2.jpg" alt="Member 2" class="member-image">
+            <div class="member-details">
+                <h3>Member 2 Name</h3>
+                <p><strong>Major:</strong> Electrical Engineering</p>
+                <p>My expertise lies in integrating machine learning with building automation systems for improved energy management.</p>
+                <div class="contact-links">
+                    <a href="https://linkedin.com/in/member2" target="_blank">LinkedIn</a>
+                    <a href="mailto:member2@example.com">Email</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <img src="images/member3.jpg" alt="Member 3" class="member-image">
+            <div class="member-details">
+                <h3>Member 3 Name</h3>
+                <p><strong>Major:</strong> Data Science</p>
+                <p>I focus on data preprocessing and feature engineering to help make our models more efficient and accurate.</p>
+                <div class="contact-links">
+                    <a href="https://linkedin.com/in/member3" target="_blank">LinkedIn</a>
+                    <a href="mailto:member3@example.com">Email</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <img src="images/member4.jpg" alt="Member 4" class="member-image">
+            <div class="member-details">
+                <h3>Member 4 Name</h3>
+                <p><strong>Major:</strong> Mechanical Engineering</p>
+                <p>My role is to ensure that the solutions we create align with practical building management and HVAC systems.</p>
+                <div class="contact-links">
+                    <a href="https://linkedin.com/in/member4" target="_blank">LinkedIn</a>
+                    <a href="mailto:member4@example.com">Email</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <img src="images/member5.jpg" alt="Member 5" class="member-image">
+            <div class="member-details">
+                <h3>Member 5 Name</h3>
+                <p><strong>Major:</strong> Software Engineering</p>
+                <p>I specialize in web application development, ensuring our machine learning models are accessible through user-friendly interfaces.</p>
+                <div class="contact-links">
+                    <a href="https://linkedin.com/in/member5" target="_blank">LinkedIn</a>
+                    <a href="mailto:member5@example.com">Email</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
