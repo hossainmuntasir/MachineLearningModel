@@ -492,7 +492,7 @@ class LineChartCreator:
         fig.add_trace(
             go.Scattergl(
                 x=df.Datetime,
-                y=df.Predicted,
+                y=df.Predicted/3600,
                 marker=dict(
                     color=self.line2_color,
                     size=self.marker_thick,
