@@ -183,8 +183,8 @@ class ScatterPlotCreator:
                         size=12,
                         color='lightgrey',
                         line=dict(
-                            width=1,
-                            color='black' if i>1 else 'lightgrey'
+                            width=1.5 if i>1 else 0.5,
+                            color='white' if i>1 else 'lightgrey'
                         )
                     )
                 )
@@ -208,8 +208,8 @@ class ScatterPlotCreator:
                             color=colors_map[val],
                             symbol=symbols_map[dfs.Fan_status.unique()[0]],
                             line=dict(
-                                width=1 if i>1 else 1,
-                                color='black' if i>1 else 'grey'
+                                width=1.5 if i>1 else 0.5,
+                                color='black' if i>1 else 'lightgrey'
                             )
                         )
                     )
