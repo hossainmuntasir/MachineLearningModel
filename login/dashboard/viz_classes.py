@@ -249,6 +249,7 @@ class ScatterPlotCreator:
             hoverlabel=dict(align='left'), 
             height=600,
             legend=dict(
+                font=dict(color='white'),
                 x=-0.01, 
                 xanchor='right',)
             )
