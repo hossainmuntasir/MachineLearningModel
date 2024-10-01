@@ -96,14 +96,8 @@ class ModelComparisonDashboard:
                             value=[0, 24]  # Initial range from midnight to 11:59 PM
                         ),
                         html.Br(),
-                    ], 
-                    style={'background-color':'#D9E3F1',
-                        'padding':5}),
-                ], 
-                style={
-                    'background-color':'white',
-                    'padding':10
-                })
+                    ]),
+                ]})
             ],width=3),
         ]),
     ],fluid=True)

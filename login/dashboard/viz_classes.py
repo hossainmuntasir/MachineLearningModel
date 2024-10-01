@@ -53,16 +53,26 @@ class ConfusionMatrixCreator:
             width=500,
             height=400,
             # title='<b>Confusion Matrix</b>',
-            margin=dict(t=10,l=10,r=10,b=10),
+            margin=dict(t=10,l=10,r=10,b=10), 
+            plot_bgcolor='#181A20',
+            paper_bgcolor='#181A20',
             yaxis=dict(
                 title='<b>Actual</b>',
                 autorange='reversed',
-                tickfont=dict(size=15)
+                titlefont=dict(
+                    color='white'
+                ),
+                tickfont=dict(
+                    color='white',
+                    size=15)
             ),
             xaxis=dict(
                 side='top',
                 title='<b>Predicted</b>',
-                tickfont=dict(size=15)
+                tickfont=dict(
+                    color='white',
+                    size=15),
+                titlefont=dict(color='white')
             )
         )
 
@@ -80,8 +90,17 @@ class FeatureImportanceCreator:
         fig = px.bar(fis, x='Score', y='Features', orientation='h')
         fig.update_layout(
             # title='<b>Feature Importance</b>', 
+            plot_bgcolor='#181A20',
+            paper_bgcolor='#181A20',
+            xaxis=dict(
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')), 
+            yaxis=dict(
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')),
             height=400,
             margin=dict(t=10,l=10,r=10,b=10))
+        
         return fig
 
 
@@ -224,6 +243,8 @@ class ScatterPlotCreator:
         fig.update_layout(
             xaxis=dict(showticklabels=False), 
             yaxis=dict(showticklabels=False), 
+            plot_bgcolor='#181A20',
+            paper_bgcolor='#181A20',
             margin=dict(t=10,l=10,r=10,b=10),
             hoverlabel=dict(align='left'), 
             height=600,
@@ -231,6 +252,7 @@ class ScatterPlotCreator:
                 x=-0.01, 
                 xanchor='right',)
             )
+        
         return fig
 
 class BarChartCreator:
@@ -347,13 +369,13 @@ class BarChartCreator:
         # Add axis titles
         fig.update_layout(
             xaxis=dict(
-            title=f'<b>Building {self.building_no} Zones</b>',
-            tickfont=dict(color='white'),
-            titlefont=dict(color='white')), 
+                title=f'<b>Building {self.building_no} Zones</b>',
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')), 
             yaxis=dict(
-            title=f'<b>Total Time Fan On (hours)</b>',
-            tickfont=dict(color='white'),
-            titlefont=dict(color='white')), 
+                title=f'<b>Total Time Fan On (hours)</b>',
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')), 
             plot_bgcolor='#181A20',
             paper_bgcolor='#181A20',
             barmode='overlay',
