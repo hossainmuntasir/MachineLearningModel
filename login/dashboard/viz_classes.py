@@ -476,7 +476,7 @@ class LineChartCreator:
         fig.add_trace(
             go.Scattergl(
                 x=df.Datetime,
-                y=df.Fan_time_diff,
+                y=df.Fan_time_diff/3600,
                 marker=dict(
                     color=self.line1_color,
                     size=self.marker_thick,
@@ -523,7 +523,7 @@ class LineChartCreator:
             xaxis=dict(title=f'<b>{zone_name} All time Fan Usage</b>',
                 tickfont=dict(color='white'),
                 titlefont=dict(color='white')), 
-            yaxis=dict(title=f'<b>Total {agg_map[agg]} Fan On Time (mins)</b>',
+            yaxis=dict(title=f'<b>Total {agg_map[agg]} Fan On Time (hours)</b>',
                 tickfont=dict(color='white'),
                 titlefont=dict(color='white')),
             hovermode='x unified',
