@@ -1,4 +1,6 @@
-output/*/building*
+# Some of the random forest model files are very big
+output/models/randomforest*.joblib
+!output/models/randomforest_building[12]_tuned.joblib
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

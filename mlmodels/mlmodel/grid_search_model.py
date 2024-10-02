@@ -13,7 +13,7 @@ from sklearn.metrics import accuracy_score, f1_score, roc_auc_score, matthews_co
 from sklearn.pipeline import make_pipeline
 from sklearn.compose import make_column_transformer
 from sklearn.preprocessing import OneHotEncoder, TargetEncoder
-from joblib import Parallel, delayed
+from joblib import Parallel, delayed, dump
 from tqdm import tqdm
 
 class GridSearchModel(ABC):
@@ -182,10 +182,6 @@ class GridSearchModel(ABC):
 
         results.to_csv(filepath, columns=columns, index=False)
         return filepath
-
-    def save_model(self):
-        # TODO: save trained model to file
-        pass
 
     @abstractmethod
     def _search_params(self, x_train, y_train) -> dict[str, Any]:
