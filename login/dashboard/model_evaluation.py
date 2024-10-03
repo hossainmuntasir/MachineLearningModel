@@ -50,7 +50,7 @@ class ModelEvaluationDashboard:
                     dbc.Row([
                         html.Div(                        
                             dbc.Table([
-                                html.Thead(html.Tr([html.Th('Total Usage'), html.Th('Predicted Usage')])),
+                                html.Thead(html.Tr([html.Th('Total Usage (hours)'), html.Th('Predicted Usage (hours)')])),
                                 html.Tbody(html.Tr([html.Td(id='bar_total'), html.Td(id='bar_predicted')])),
                             ], color='secondary', bordered=True, id='table', size='lg'
                             ), id='table_wrapper'

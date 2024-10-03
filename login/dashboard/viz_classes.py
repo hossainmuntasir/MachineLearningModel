@@ -181,9 +181,9 @@ class ScatterPlotCreator:
                     marker=dict(
                         symbol=symbols[i],
                         size=12,
-                        color='lightgrey',
+                        color='darkgrey',
                         line=dict(
-                            width=1.5 if i>1 else 0.5,
+                            width=3 if i>1 else 0.5,
                             color='white' if i>1 else 'lightgrey'
                         )
                     )
@@ -202,14 +202,14 @@ class ScatterPlotCreator:
                         name=f'Fan: {dfs.Fan_status.unique()[0]}, Prediction: {dfs.Predicted.unique()[0]}',
                         showlegend=False,
                         mode='markers',
-                        opacity=0.6,
+                        opacity=1,
                         marker=dict(
                             size=10,
                             color=colors_map[val],
                             symbol=symbols_map[dfs.Fan_status.unique()[0]],
                             line=dict(
-                                width=1.5 if i>1 else 0.5,
-                                color='black' if i>1 else 'lightgrey'
+                                width=3 if i>1 else 0.5,
+                                color='white' if i>1 else 'lightgrey'
                             )
                         )
                     )

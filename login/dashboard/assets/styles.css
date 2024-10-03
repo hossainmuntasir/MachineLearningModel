@@ -45,11 +45,11 @@ h1 {
 }
 
 .Select-value {
-    color: white;
+    color: white !important;
 }
 
 .Select-value-label {
-    color: white;
+    color: white !important;
 }
 
 .VirtualizedSelectOption {
