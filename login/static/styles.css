@@ -75,7 +75,7 @@ body {
 } */
 
 #hero {
-    background: url('../static/images/hvac.jpeg') no-repeat center center; 
+    background: url('../static/images/hvac5.jpeg') no-repeat center center; 
     background-size: cover;
     color:white;
     padding-top: 100px;
@@ -90,29 +90,46 @@ body {
 
 
 #hero h1 {
-    font-size: 3rem;
-    font-weight: bold;
+    font-size: 4rem;
+    font-weight: 800;
     margin-bottom: 20px;
-    color: yellow;
+    color: white;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-
+    -webkit-text-stroke: 2px black; /* Adds a black border of 2px width around the text */
 }
 
+
+
+
+
+
 #hero p {
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     margin-bottom: 40px;
-    color: yellow;
+    color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    -webkit-text-stroke: 0.5px black;
+    
 }
 
 #hero .btn-outline-light {
     padding: 10px 30px;
     border-radius: 50px;
-    color: yellow;
+    color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
-
-    
+    background-color: #005a99;
+    border-color: #005a99;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
+
+#hero .btn-outline-light:hover {
+    background-color: #005a99; /* Darker blue on hover */
+    border-color: #004075; /* Even darker border on hover */
+    color: #ffffff; /* Keep text color white */
+    transform: scale(1.05); /* Slightly enlarge the button */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 1); /* Increase the shadow slightly for more depth */
+}
+
 
 /* Overview Section Styles */
 .container2 {
@@ -136,17 +153,71 @@ body {
 }
 
 .container2 h2, .container2 h3 {
-    color: #007acc;
+    color:  rgb(6, 49, 106);
+    
     margin-bottom: 1em;
     font-weight: bold;
 }
 
 /* Footer Styles */
 footer {
-    /* background: linear-gradient(135deg, #2e8b57, #007acc); */
-    background:#333;
+    background: #333; /* Same color as your current footer */
     color: white;
     padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Spacing between different footer elements */
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #1e90ff; /* Lighter color on hover for link emphasis */
+}
+
+.footer-icon {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+.footer-icon:hover {
+    transform: scale(1.1); /* Slight enlargement on hover for icons */
+}
+
+.footer-logos {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo {
+    height: 50px; /* Adjust this value depending on how large you want the logos */
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.1); /* Slightly enlarge logo on hover for interactivity */
 }
 
 footer p {
@@ -154,11 +225,13 @@ footer p {
     font-size: 14px;
 }
 
+
 /* Button Hover Effect */
 .btn-primary:hover {
     background-color: #005a99;
     border-color: #005a99;
     transition: 0.3s;
+    transform: scale(1.05);
 }
 
 /* Video Container Spacing */
@@ -238,3 +311,18 @@ body {
     margin-right: 1em;
     font-weight: bold;
 }
+
+.company-logo {
+    height: 40px; /* Adjust the height as needed */
+    margin-right: 10px; /* Spacing between the logos and the text */
+    vertical-align: middle; /* Align the logo with the text */
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: #ffffff; /* You can change the color for better visibility */
+    background: #007acc; /* Add a background color to highlight */
+    border-radius: 8px; /* Optional for rounded corners */
+    padding: 8px 15px; /* Optional to make it more prominent */
+}
+
