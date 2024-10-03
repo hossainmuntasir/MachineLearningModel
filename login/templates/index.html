@@ -1,70 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Machine Learning Model</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="../static/styles.css">
-                          
-    </head>
-    <body>
-        
-      <!-- Navigation Bar -->
-      <div class="navbar">
-        <a class="navbar" href="#">Hello, {{ session.username }}!</a>
-        <a href="/index" class="active">Home</a>
-        <a href="/model-comparison">Model Evaluation</a>
-        <a href="/building-1">Building 1</a>
-        <a href="/building-2">Building 2</a>
-        <a href="/building-3">Building 3</a>
-        <a href="/about_us">About us</a>
-        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
-      </div>
 
-      <!-- Hero Section -->
-      <section id="hero" class="text-center">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Model</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="navbar-left">
+            <span>Hello, {{ session.username }}!</span>
+        </div>
+        <div class="navbar-right">
+            <a href="/index" class="nav-link active">Home</a>
+            <a href="/model-comparison" class="nav-link">Model Evaluation</a>
+            <a href="/building-1" class="nav-link">Building 1</a>
+            <a href="/building-2" class="nav-link">Building 2</a>
+            <a href="/building-3" class="nav-link">Building 3</a>
+            <a href="/about_us" class="nav-link">About Us</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-logout">Logout</a>
+        </div>
+    </div>
+    
+
+    <!-- Hero Section -->
+    <!-- <section id="hero" class="text-center">
         <div class="container">
             <h1>Machine Learning Model for Building Performance Optimisation</h1>
             <p>Harnessing Machine Learning to Drive Energy Efficiency and Environmental Impact</p>
             <div class="video-container">
-                <iframe width="60%" height="400" src="https://www.youtube.com/embed/RXmEBXS3UCs?si=-DrtwltdymfgVAYt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="60%" height="400" src="https://www.youtube.com/embed/RXmEBXS3UCs?si=-DrtwltdymfgVAYt"
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
+            <a href="#overview" class="btn btn-outline-light mt-4">Learn More</a>
+        </div>
+    </section> -->
+
+    <!-- Hero Section -->
+    <section id="hero" class="text-center">
+        <div class="container">
+            <h1>Machine Learning Model for Building Performance Optimisation</h1>
+            <p>Harnessing Machine Learning to Drive Energy Efficiency and Environmental Impact</p>
+            
             <a href="#overview" class="btn btn-outline-light mt-4">Learn More</a>
         </div>
     </section>
 
+
     <!-- Project Overview Section -->
     <section id="overview" class="p-5 bg-white">
         <div class="container">
-            <h2 class="text-primary">About the Project</h2>
-            <p>This project leverages the power of AI and machine learning to optimize building performance, ensuring sustainability and efficiency.</p>
-            
-            <!-- Storytelling and Action Buttons in Sequence -->
-            <div class="mt-4">
-                <h3>Model Evaluation</h3>
-                <p>The "Model Evaluation" page provides a comprehensive overview of the machine learning model's performance used in optimizing building efficiency. It includes visualizations such as feature importance, which shows which factors have the most significant impact on the predictions, and a confusion matrix, which measures the accuracy of the model in predicting fan operation.
-
-                 <br>   Additionally, the page includes a scatter plot of building data that visualizes the relationship between actual and predicted fan statuses across different zones. Users can explore these predictions by interacting with filter options, allowing them to select specific zones, dates, and time ranges. The filters help users easily analyze patterns in fan usage, identify misclassifications, and better understand the factors influencing energy savings across various areas of the building. <br> <p>
-                <a href="/model-comparison" class="btn btn-primary mb-3">ML Model Analytics Platform</a>
+            <!-- About the Project -->
+            <div class="container2">
+                <h2 class="text-primary">About the Project</h2>
+                <p>This project uses Machine Learning to predict the fan status in three different buildings, using a year's worth of data to optimize energy efficiency. By analyzing features such as temperature, CO2 levels, humidity, and damper status, the model predicts when the fan should be turned on or off to minimize unnecessary energy consumption while maintaining indoor comfort. The predictive model is trained on historical data from each building, helping to automate fan control and allowing building managers to make data-driven decisions that improve sustainability and overall operational efficiency.</p>
+                <div class="video-container">
+                    <iframe width="800" height="400" src="https://www.youtube.com/embed/RXmEBXS3UCs?si=-DrtwltdymfgVAYt"
+                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
             </div>
-            
+            <!-- Model Evaluation Section -->
             <div class="mt-4">
-                <h3>Building 1 </h3>
-                <p>The "Building 1" page provides an analysis of fan usage across different zones in Building 1, comparing actual and predicted fan-on times. It includes bar charts, line graphs, and pie charts that illustrate energy savings, usage trends, and performance efficiency, allowing users to assess the impact of optimization over time specifically for Building 1.<br></p>
-                <a href="/building-1" class="btn btn-primary mb-3">Explore Building 1</a>
+                <div class="container2">
+                    <h3>Model Evaluation</h3>
+                    <p>The "Model Evaluation" page provides a comprehensive overview of the machine learning model's performance used in optimizing building efficiency. It includes visualizations such as feature importance, which shows which factors have the most significant impact on the predictions, and a confusion matrix, which measures the accuracy of the model in predicting fan operation.</p>
+                    <p>Additionally, the page includes a scatter plot of building data that visualizes the relationship between actual and predicted fan statuses across different zones. Users can explore these predictions by interacting with filter options, allowing them to select specific zones, dates, and time ranges. The filters help users easily analyze patterns in fan usage, identify misclassifications, and better understand the factors influencing energy savings across various areas of the building.</p>
+                    <a href="/model-comparison" class="btn btn-primary mb-3">ML Model Analytics Platform</a>
+                </div>
             </div>
-
+            <!-- Combined Building Section for Building 1, 2, 3 -->
             <div class="mt-4">
-                <h3>Building 2 </h3>
-                <p>The "Building 2" page provides an analysis of fan usage across different zones in Building 1, comparing actual and predicted fan-on times. It includes bar charts, line graphs, and pie charts that illustrate energy savings, usage trends, and performance efficiency, allowing users to assess the impact of optimization over time specifically for Building 2.<br></p>
-                <a href="/building-2" class="btn btn-primary mb-3">Explore Building 2</a>
-            </div>
-
-            <div class="mt-4">
-                <h3>Building 3 </h3>
-                <p>The "Building 3" page provides an analysis of fan usage across different zones in Building 1, comparing actual and predicted fan-on times. It includes bar charts, line graphs, and pie charts that illustrate energy savings, usage trends, and performance efficiency, allowing users to assess the impact of optimization over time specifically for Building 3.<br></p>
-                <a href="/building-3" class="btn btn-primary mb-3">Explore Building 3</a>
+                <div class="container2">
+                    <h3>Buildings 1, 2, and 3</h3>
+                    <p>The pages for Building 1, 2, and 3 provide an analysis of fan usage across different zones in each building, comparing actual and predicted fan-on times. These analyses include bar charts, line graphs, and pie charts that illustrate energy savings, usage trends, and performance efficiency, allowing users to assess the impact of optimization over time for each building.</p>
+                    <div class="d-flex justify-content-start gap-3">
+                        <a href="/building-1" class="btn btn-primary mb-3">Explore Building 1</a>
+                        <a href="/building-2" class="btn btn-primary mb-3">Explore Building 2</a>
+                        <a href="/building-3" class="btn btn-primary mb-3">Explore Building 3</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -87,8 +107,7 @@
                 });
             });
         });
-
     </script>
-    
-    </body>
+</body>
+
 </html>

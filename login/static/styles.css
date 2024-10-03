@@ -1,5 +1,5 @@
 .jumbotron {
-    background-color: #1068c6; 
+    background-color: #1068c6;
 }
 
 body {
@@ -7,82 +7,144 @@ body {
     line-height: 1.6;
 }
 
+/* Navbar Styles */
 .navbar {
     background-color: #333;
-    padding: 18px;
+    padding: 15px 15px; /* Reduced padding to make the navbar slimmer */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Left and right alignment */
+    border-radius: 0px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 0px;
+}
+
+/* Left part of the navbar for "Hello, username!" */
+.navbar-left {
+    color: #fff;
     font-size: 15px;
+    font-weight: bold;
+}
+
+/* Right part of the navbar for navigation links */
+.navbar-right {
+    display: flex;
+    gap: 10px; /* Spacing between navigation links */
 }
 
 .navbar a {
     color: white;
-    padding: 5px 20px;
+    padding: 8px 15px; /* Adjusted padding for better spacing */
     text-decoration: none;
     text-align: center;
     display: inline-block;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .navbar a:hover {
-    background : linear-gradient(135deg, #2e8b57, #007acc);
+    background: linear-gradient(135deg, #2e8b57, #007acc);
     color: #fff;
-    border-radius: 32px;
     transition: 0.3s;
+}
 
+/* Logout button styling */
+.btn-logout {
+    color: #ffffff;
+    background: #c0392b;
+    padding: 5px 15px; /* Consistent with other links */
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease-in-out;
+}
 
+.btn-logout:hover {
+    background: #e74c3c;
+    transform: scale(1.05);
 }
 
 
-#hero {
+/* Hero Section Styles */
+/* #hero {
     background: linear-gradient(135deg, #2e8b57, #007acc);
     color: white;
     padding-top: 100px;
     padding-bottom: 100px;
+} */
+
+#hero {
+    background: url('../static/images/hvac.jpeg') no-repeat center center; 
+    background-size: cover;
+    color:white;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
+    height: 100vh; /* Make it full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 
 #hero h1 {
     font-size: 3rem;
     font-weight: bold;
     margin-bottom: 20px;
+    color: yellow;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+
 }
 
 #hero p {
     font-size: 1.2rem;
     margin-bottom: 40px;
+    color: yellow;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 #hero .btn-outline-light {
     padding: 10px 30px;
     border-radius: 50px;
-}
-/*
-/ Overview Section /
-#overview h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    text-align: center;
+    color: yellow;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+
+    
 }
 
-#overview .container {
-    max-width: 900px;
+/* Overview Section Styles */
+.container2 {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 2em;
+    margin-bottom: 2em;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+
+    text-align:justify; /* Center the text inside the container */
+    display: flex;
+    flex-direction: column; /* Ensure content flows vertically */
+    align-items: center; /* Horizontally center the content */
+    justify-content: center; /* Vertically center the content */
 }
 
-#overview h3 {
-    font-size: 1.5rem;
+
+.container2:hover {
+    transform: translateY(-5px);
+}
+
+.container2 h2, .container2 h3 {
     color: #007acc;
-}
-
-#overview p {
-    margin-bottom: 15px;
-}
-
-#overview .btn {
-    border-radius: 50px;
-    padding: 10px 20px;
+    margin-bottom: 1em;
     font-weight: bold;
 }
 
-/ Footer Styles /
+/* Footer Styles */
 footer {
-    background: linear-gradient(135deg, #2e8b57, #007acc);
+    /* background: linear-gradient(135deg, #2e8b57, #007acc); */
+    background:#333;
     color: white;
     padding: 20px 0;
 }
@@ -92,13 +154,87 @@ footer p {
     font-size: 14px;
 }
 
-/ Button Hover Effect /
+/* Button Hover Effect */
 .btn-primary:hover {
     background-color: #005a99;
     border-color: #005a99;
     transition: 0.3s;
 }
 
-/ Spacing Improvements */
+/* Video Container Spacing */
 .video-container {
-    margin-top: 30px;}
+    margin-top: 30px;
+}
+
+/* Flex container for building buttons */
+.d-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2em 0;
+    
+}
+
+.group-photo {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.group-photo img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.team-member {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 2em;
+    margin-bottom: 2em;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.member-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 2em;
+}
+
+.member-details {
+    max-width: 600px;
+}
+
+.member-details h3 {
+    margin: 0 0 0.5em;
+}
+
+.member-details p {
+    margin: 0.5em 0;
+    font-size: 0.95em;
+    color: #666;
+}
+
+.contact-links a {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 1em;
+    font-weight: bold;
+}

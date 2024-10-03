@@ -83,7 +83,7 @@ input[type="submit"]:active {
 
 div.msg {
   margin-bottom: 20px;
-  color: #f00;
+  color: greenyellow;
 }
 
 p.bottom {

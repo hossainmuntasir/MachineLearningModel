@@ -6,84 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     <link rel="stylesheet" href="../static/styles.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 2em 0;
-        }
-
-        .group-photo {
-            text-align: center;
-            margin-bottom: 2em;
-        }
-
-        .group-photo img {
-            width: 100%;
-            max-width: 600px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .team-member {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 2em;
-            margin-bottom: 2em;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-        }
-
-        .member-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 2em;
-        }
-
-        .member-details {
-            max-width: 600px;
-        }
-
-        .member-details h3 {
-            margin: 0 0 0.5em;
-        }
-
-        .member-details p {
-            margin: 0.5em 0;
-            font-size: 0.95em;
-            color: #666;
-        }
-
-        .contact-links a {
-            text-decoration: none;
-            color: #007bff;
-            margin-right: 1em;
-            font-weight: bold;
-        }
-    </style>
+    
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <div class="navbar">
-        <a class="navbar" href="#">Hello, {{ session.username }}!</a>
-        <a href="/index" class="active">Home</a>
-        <a href="/model-comparison">Model Evaluation</a>
-        <a href="/building-1">Building 1</a>
-        <a href="/building-2">Building 2</a>
-        <a href="/building-3">Building 3</a>
-        <a href="/about_us">About us</a>
-        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+        <div class="navbar-left">
+            <span>Hello, {{ session.username }}!</span>
+        </div>
+        <div class="navbar-right">
+            <a href="/index" class="nav-link active">Home</a>
+            <a href="/model-comparison" class="nav-link">Model Evaluation</a>
+            <a href="/building-1" class="nav-link">Building 1</a>
+            <a href="/building-2" class="nav-link">Building 2</a>
+            <a href="/building-3" class="nav-link">Building 3</a>
+            <a href="/about_us" class="nav-link">About Us</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-logout">Logout</a>
+        </div>
     </div>
 
     <div class="container">
@@ -102,7 +42,7 @@
                 <p>I specialize in overseeing the entire project, coordinating between different teams, and ensuring all our goals are met efficiently. I bring experience in managing machine learning projects from inception to deployment.</p>
                 <div class="contact-links">
                     <a href="https://linkedin.com/in/member1" target="_blank">LinkedIn</a>
-                    <a href="mailto:member1@example.com">Email</a>
+                    <a href="mailto:103798748@student.swin.edu.au">Email</a>
                 </div>
             </div>
         </div>
@@ -116,7 +56,7 @@
                 <p>My expertise lies in analyzing building data, cleaning it, and applying machine learning models to extract valuable insights. I focus on improving the efficiency and accuracy of our predictions.</p>
                 <div class="contact-links">
                     <a href="https://linkedin.com/in/member2" target="_blank">LinkedIn</a>
-                    <a href="mailto:member2@example.com">Email</a>
+                    <a href="mailto:103370243@student.swin.edu.au">Email</a>
                 </div>
             </div>
         </div>
@@ -130,7 +70,7 @@
                 <p>I develop and maintain the web applications that provide a user-friendly interface for accessing our machine learning solutions. My role also involves integrating various APIs to enhance functionality.</p>
                 <div class="contact-links">
                     <a href="https://linkedin.com/in/member3" target="_blank">LinkedIn</a>
-                    <a href="mailto:member3@example.com">Email</a>
+                    <a href="mailto:103517862@student.swin.edu.au">Email</a>
                 </div>
             </div>
         </div>
@@ -144,7 +84,7 @@
                 <p>I am responsible for designing, training, and optimizing the machine learning models used to predict building performance metrics. I work on model validation and fine-tuning to ensure reliability.</p>
                 <div class="contact-links">
                     <a href="https://linkedin.com/in/member4" target="_blank">LinkedIn</a>
-                    <a href="mailto:member4@example.com">Email</a>
+                    <a href="mailto:104005371@student.swin.edu.au">Email</a>
                 </div>
             </div>
         </div>
@@ -158,7 +98,7 @@
                 <p>My responsibility is to ensure that our web applications and machine learning models are tested thoroughly before deployment. I focus on functionality, user experience, and system stability.</p>
                 <div class="contact-links">
                     <a href="https://linkedin.com/in/member5" target="_blank">LinkedIn</a>
-                    <a href="mailto:member5@example.com">Email</a>
+                    <a href="mailto:103789917@student.swin.edu.au">Email</a>
                 </div>
             </div>
         </div>
@@ -172,7 +112,7 @@
                 <p>I work on ensuring that all the data we use and the interfaces we create are secure. My primary focus is on data privacy and protecting our systems from external threats, making sure our solutions are compliant with industry standards.</p>
                 <div class="contact-links">
                     <a href="https://linkedin.com/in/member5" target="_blank">LinkedIn</a>
-                    <a href="mailto:member5@example.com">Email</a>
+                    <a href="mailto:103788671@student.swin.edu.au">Email</a>
                 </div>
             </div>
         </div>
