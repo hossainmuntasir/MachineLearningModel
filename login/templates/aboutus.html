@@ -13,16 +13,20 @@
     <!-- Navigation Bar -->
     <div class="navbar">
         <div class="navbar-left">
-            <span>Hello, {{ session.username }}!</span>
+            <span>
+                <img src="{{ url_for('static', filename='../static/images/logo.svg') }}" alt="Company Logo 1" class="footer-logo logo-1">&nbsp;&nbsp;
+                <img src="{{ url_for('static', filename='../static/images/logo-long-full.svg') }}" alt="Company Logo 2" class="footer-logo logo-2">&nbsp;
+                <span class="username">Hello, {{ session.username }}!</span>
+            </span>
         </div>
-        <div class="navbar-right">
-            <a href="/index" class="nav-link active">Home</a>
-            <a href="/model-comparison" class="nav-link">Model Evaluation</a>
-            <a href="/building-1" class="nav-link">Building 1</a>
-            <a href="/building-2" class="nav-link">Building 2</a>
-            <a href="/building-3" class="nav-link">Building 3</a>
-            <a href="/about_us" class="nav-link">About Us</a>
-            <a href="{{ url_for('logout') }}" class="btn btn-logout">Logout</a>
+        <div class="navbar-right" id="navbarButtons">
+            <a href="/index" class="nav-link nav-home">Home</a>
+            <a href="/model-comparison" class="nav-link nav-model-comparison">Model Evaluation</a>
+            <a href="/building-1" class="nav-link nav-building-1">Building 1</a>
+            <a href="/building-2" class="nav-link nav-building-2">Building 2</a>
+            <a href="/building-3" class="nav-link nav-building-3">Building 3</a>
+            <a href="/about_us" class="nav-link nav-about-us">About Us</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-logout nav-logout">Logout</a>
         </div>
     </div>
 
@@ -117,6 +121,26 @@
             </div>
         </div>
     </div>
+
+    <footer class="text-center"></footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <!-- GitHub Link -->
+                <a href="https://github.com/hossainmuntasir/MachineLearningModel" target="_blank" class= "footer-link">Github</a>
+                </a>
+                <!-- About Us Page Link -->
+                <a href="/about_us" class="footer-link">About Us</a>
+                <!-- Company Link -->
+                <a href="https://piechowskienergy.com/" target="_blank" class="footer-link">Our Company</a>
+            </div>
+            <!-- Logos for Swinburne and Company -->
+            <div class="footer-logos">
+                <img src="../static/images/logo-long-full.svg" alt="Swinburne University Logo" class="footer-logo">
+                <img src="../static/images/logo.svg" alt="Company Logo" class="footer-logo">
+            </div>
+            <p>&copy; Machine Learning Model for Optimising Building Efficiency</p>
+        </div>
+    </footer>
 </body>
 
 </html>

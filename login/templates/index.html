@@ -11,24 +11,25 @@
 
 <body>
     <!-- Navigation Bar -->
-<div class="navbar">
-    <div class="navbar-left">
-        <span>
-            <img src="{{ url_for('static', filename='../static/images/logo.svg') }}" alt="Company Logo 1" class="company-logo">
-            <img src="{{ url_for('static', filename='../static/images/logo-long-full.svg') }}" alt="Company Logo 2" class="company-logo">
-            Hello, {{ session.username }}!
-        </span>
+    <div class="navbar">
+        <div class="navbar-left">
+            <span>
+                <img src="{{ url_for('static', filename='../static/images/logo.svg') }}" alt="Company Logo 1" class="footer-logo logo-1">&nbsp;&nbsp;
+                <img src="{{ url_for('static', filename='../static/images/logo-long-full.svg') }}" alt="Company Logo 2" class="footer-logo logo-2">&nbsp;
+                <span class="username">Hello, {{ session.username }}!</span>
+            </span>
+        </div>
+        <div class="navbar-right" id="navbarButtons">
+            <a href="/index" class="nav-link nav-home">Home</a>
+            <a href="/model-comparison" class="nav-link nav-model-comparison">Model Evaluation</a>
+            <a href="/building-1" class="nav-link nav-building-1">Building 1</a>
+            <a href="/building-2" class="nav-link nav-building-2">Building 2</a>
+            <a href="/building-3" class="nav-link nav-building-3">Building 3</a>
+            <a href="/about_us" class="nav-link nav-about-us">About Us</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-logout nav-logout">Logout</a>
+        </div>
     </div>
-    <div class="navbar-right">
-        <a href="/index" class="nav-link {% if current_page == 'home' %}active{% endif %}">Home</a>
-        <a href="/model-comparison" class="nav-link {% if current_page == 'model_evaluation' %}active{% endif %}">Model Evaluation</a>
-        <a href="/building-1" class="nav-link {% if current_page == 'building_1' %}active{% endif %}">Building 1</a>
-        <a href="/building-2" class="nav-link {% if current_page == 'building_2' %}active{% endif %}">Building 2</a>
-        <a href="/building-3" class="nav-link {% if current_page == 'building_3' %}active{% endif %}">Building 3</a>
-        <a href="/about_us" class="nav-link {% if current_page == 'about_us' %}active{% endif %}">About Us</a>
-        <a href="{{ url_for('logout') }}" class="btn btn-logout">Logout</a>
-    </div>
-</div>
+    
 
     
 
@@ -98,7 +99,7 @@
         <div class="footer-content">
             <div class="footer-links">
                 <!-- GitHub Link -->
-                <a href="https://github.com/your-github" target="_blank" class= "footer-link">Github</a>
+                <a href="https://github.com/hossainmuntasir/MachineLearningModel" target="_blank" class= "footer-link">Github</a>
                 </a>
                 <!-- About Us Page Link -->
                 <a href="/about_us" class="footer-link">About Us</a>
@@ -129,6 +130,8 @@
                 });
             });
         });
+
+       
     </script>
 </body>
 

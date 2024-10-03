@@ -47,6 +47,7 @@ body {
     background: linear-gradient(135deg, #2e8b57, #007acc);
     color: #fff;
     transition: 0.3s;
+    transform: scale(1.1);
 }
 
 /* Logout button styling */
@@ -106,7 +107,7 @@ body {
 #hero p {
     font-size: 1.7rem;
     margin-bottom: 40px;
-    color: white;
+    color: yellow;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
     -webkit-text-stroke: 0.5px black;
     
@@ -312,17 +313,4 @@ body {
     font-weight: bold;
 }
 
-.company-logo {
-    height: 40px; /* Adjust the height as needed */
-    margin-right: 10px; /* Spacing between the logos and the text */
-    vertical-align: middle; /* Align the logo with the text */
-}
-
-.nav-link.active {
-    font-weight: bold;
-    color: #ffffff; /* You can change the color for better visibility */
-    background: #007acc; /* Add a background color to highlight */
-    border-radius: 8px; /* Optional for rounded corners */
-    padding: 8px 15px; /* Optional to make it more prominent */
-}
 
