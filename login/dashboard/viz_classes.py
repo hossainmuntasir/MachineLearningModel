@@ -53,16 +53,26 @@ class ConfusionMatrixCreator:
             width=500,
             height=400,
             # title='<b>Confusion Matrix</b>',
-            margin=dict(t=10,l=10,r=10,b=10),
+            margin=dict(t=10,l=10,r=10,b=10), 
+            plot_bgcolor='#181A20',
+            paper_bgcolor='#181A20',
             yaxis=dict(
                 title='<b>Actual</b>',
                 autorange='reversed',
-                tickfont=dict(size=15)
+                titlefont=dict(
+                    color='white'
+                ),
+                tickfont=dict(
+                    color='white',
+                    size=15)
             ),
             xaxis=dict(
                 side='top',
                 title='<b>Predicted</b>',
-                tickfont=dict(size=15)
+                tickfont=dict(
+                    color='white',
+                    size=15),
+                titlefont=dict(color='white')
             )
         )
 
@@ -80,8 +90,17 @@ class FeatureImportanceCreator:
         fig = px.bar(fis, x='Score', y='Features', orientation='h')
         fig.update_layout(
             # title='<b>Feature Importance</b>', 
+            plot_bgcolor='#181A20',
+            paper_bgcolor='#181A20',
+            xaxis=dict(
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')), 
+            yaxis=dict(
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')),
             height=400,
             margin=dict(t=10,l=10,r=10,b=10))
+        
         return fig
 
 
@@ -164,8 +183,8 @@ class ScatterPlotCreator:
                         size=12,
                         color='lightgrey',
                         line=dict(
-                            width=1,
-                            color='black' if i>1 else 'lightgrey'
+                            width=1.5 if i>1 else 0.5,
+                            color='white' if i>1 else 'lightgrey'
                         )
                     )
                 )
@@ -189,8 +208,8 @@ class ScatterPlotCreator:
                             color=colors_map[val],
                             symbol=symbols_map[dfs.Fan_status.unique()[0]],
                             line=dict(
-                                width=1 if i>1 else 1,
-                                color='black' if i>1 else 'grey'
+                                width=1.5 if i>1 else 0.5,
+                                color='black' if i>1 else 'lightgrey'
                             )
                         )
                     )
@@ -224,13 +243,17 @@ class ScatterPlotCreator:
         fig.update_layout(
             xaxis=dict(showticklabels=False), 
             yaxis=dict(showticklabels=False), 
+            plot_bgcolor='#181A20',
+            paper_bgcolor='#181A20',
             margin=dict(t=10,l=10,r=10,b=10),
             hoverlabel=dict(align='left'), 
             height=600,
             legend=dict(
+                font=dict(color='white'),
                 x=-0.01, 
                 xanchor='right',)
             )
+        
         return fig
 
 class BarChartCreator:
@@ -347,13 +370,13 @@ class BarChartCreator:
         # Add axis titles
         fig.update_layout(
             xaxis=dict(
-            title=f'<b>Building {self.building_no} Zones</b>',
-            tickfont=dict(color='white'),
-            titlefont=dict(color='white')), 
+                title=f'<b>Building {self.building_no} Zones</b>',
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')), 
             yaxis=dict(
-            title=f'<b>Total Time Fan On (hours)</b>',
-            tickfont=dict(color='white'),
-            titlefont=dict(color='white')), 
+                title=f'<b>Total Time Fan On (hours)</b>',
+                tickfont=dict(color='white'),
+                titlefont=dict(color='white')), 
             plot_bgcolor='#181A20',
             paper_bgcolor='#181A20',
             barmode='overlay',
@@ -453,7 +476,7 @@ class LineChartCreator:
         fig.add_trace(
             go.Scattergl(
                 x=df.Datetime,
-                y=df.Fan_time_diff,
+                y=df.Fan_time_diff/3600,
                 marker=dict(
                     color=self.line1_color,
                     size=self.marker_thick,
@@ -469,7 +492,7 @@ class LineChartCreator:
         fig.add_trace(
             go.Scattergl(
                 x=df.Datetime,
-                y=df.Predicted,
+                y=df.Predicted/3600,
                 marker=dict(
                     color=self.line2_color,
                     size=self.marker_thick,
@@ -500,7 +523,7 @@ class LineChartCreator:
             xaxis=dict(title=f'<b>{zone_name} All time Fan Usage</b>',
                 tickfont=dict(color='white'),
                 titlefont=dict(color='white')), 
-            yaxis=dict(title=f'<b>Total {agg_map[agg]} Fan On Time (mins)</b>',
+            yaxis=dict(title=f'<b>Total {agg_map[agg]} Fan On Time (hours)</b>',
                 tickfont=dict(color='white'),
                 titlefont=dict(color='white')),
             hovermode='x unified',

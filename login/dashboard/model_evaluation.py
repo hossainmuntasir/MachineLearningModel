@@ -12,7 +12,7 @@ class ModelEvaluationDashboard:
     def __init__(self, df, building_no,input_server,url_base):
         self.df = df[(df.building_no==building_no)&(df.Fan_status=='On')]
         self.building_no = building_no
-        self.selected_zone = self.df.Zone_name.unique()[0]
+        self.selected_zone = self.df.sort_values('Zone_name').Zone_name.unique()[0]
 
         # Initialize charts
         self.initial_bar = BarChartCreator(df, building_no)
