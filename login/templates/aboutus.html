@@ -74,8 +74,8 @@
 </head>
 
 <body>
-     <!-- Navigation Bar -->
-     <div class="navbar">
+    <!-- Navigation Bar -->
+    <div class="navbar">
         <a class="navbar" href="#">Hello, {{ session.username }}!</a>
         <a href="/index" class="active">Home</a>
         <a href="/model-comparison">Model Evaluation</a>
@@ -84,21 +84,22 @@
         <a href="/building-3">Building 3</a>
         <a href="/about_us">About us</a>
         <a href="{{ url_for('logout') }}" class="btn">Logout</a>
-      </div>
+    </div>
 
     <div class="container">
         <h1>About Us</h1>
         <div class="group-photo">
-            <img src="https://drive.google.com/file/d/1hlbF5xEDtM3O3z403gfn7xCqGa_eOyGs/view?usp=drivesdk" alt="Our Team Photo">
+            <img src="../static/images/TeamPhoto.jpg" alt="Our Team Photo">
         </div>
         <p>We are a team of passionate individuals working together to leverage AI and machine learning for building performance optimization. Meet our team:</p>
 
+        <!-- Team Member 1 -->
         <div class="team-member">
-            <img src="images/member1.jpg" alt="Member 1" class="member-image">
+            <img src="../static/images/image.png" alt="Member 1" class="member-image">
             <div class="member-details">
-                <h3>Member 1 Name</h3>
-                <p><strong>Major:</strong> Computer Science</p>
-                <p>I specialize in machine learning models and data analytics, and I focus on improving energy efficiency through data-driven insights.</p>
+                <h3>Hossain Muntasir</h3>
+                <p><strong>Role:</strong> Team Leader</p>
+                <p>I specialize in overseeing the entire project, coordinating between different teams, and ensuring all our goals are met efficiently. I bring experience in managing machine learning projects from inception to deployment.</p>
                 <div class="contact-links">
                     <a href="https://linkedin.com/in/member1" target="_blank">LinkedIn</a>
                     <a href="mailto:member1@example.com">Email</a>
@@ -106,12 +107,13 @@
             </div>
         </div>
 
+        <!-- Team Member 2 -->
         <div class="team-member">
-            <img src="images/member2.jpg" alt="Member 2" class="member-image">
+            <img src="../static/images/member2.jpg" alt="Member 2" class="member-image">
             <div class="member-details">
-                <h3>Member 2 Name</h3>
-                <p><strong>Major:</strong> Electrical Engineering</p>
-                <p>My expertise lies in integrating machine learning with building automation systems for improved energy management.</p>
+                <h3>Jack Baraco</h3>
+                <p><strong>Role:</strong> Data Scientist</p>
+                <p>My expertise lies in analyzing building data, cleaning it, and applying machine learning models to extract valuable insights. I focus on improving the efficiency and accuracy of our predictions.</p>
                 <div class="contact-links">
                     <a href="https://linkedin.com/in/member2" target="_blank">LinkedIn</a>
                     <a href="mailto:member2@example.com">Email</a>
@@ -119,12 +121,13 @@
             </div>
         </div>
 
+        <!-- Team Member 3 -->
         <div class="team-member">
-            <img src="images/member3.jpg" alt="Member 3" class="member-image">
+            <img src="../static/images/member3.jpg" alt="Member 3" class="member-image">
             <div class="member-details">
-                <h3>Member 3 Name</h3>
-                <p><strong>Major:</strong> Data Science</p>
-                <p>I focus on data preprocessing and feature engineering to help make our models more efficient and accurate.</p>
+                <h3>Mohammad Tousif Shahriar</h3>
+                <p><strong>Role:</strong> Software Developer</p>
+                <p>I develop and maintain the web applications that provide a user-friendly interface for accessing our machine learning solutions. My role also involves integrating various APIs to enhance functionality.</p>
                 <div class="contact-links">
                     <a href="https://linkedin.com/in/member3" target="_blank">LinkedIn</a>
                     <a href="mailto:member3@example.com">Email</a>
@@ -132,12 +135,13 @@
             </div>
         </div>
 
+        <!-- Team Member 4 -->
         <div class="team-member">
-            <img src="images/member4.jpg" alt="Member 4" class="member-image">
+            <img src="../static/images/member4.jpg" alt="Member 4" class="member-image">
             <div class="member-details">
-                <h3>Member 4 Name</h3>
-                <p><strong>Major:</strong> Mechanical Engineering</p>
-                <p>My role is to ensure that the solutions we create align with practical building management and HVAC systems.</p>
+                <h3>Winston Li</h3>
+                <p><strong>Role:</strong> Machine Learning Engineer</p>
+                <p>I am responsible for designing, training, and optimizing the machine learning models used to predict building performance metrics. I work on model validation and fine-tuning to ensure reliability.</p>
                 <div class="contact-links">
                     <a href="https://linkedin.com/in/member4" target="_blank">LinkedIn</a>
                     <a href="mailto:member4@example.com">Email</a>
@@ -145,12 +149,27 @@
             </div>
         </div>
 
+        <!-- Team Member 5 -->
         <div class="team-member">
-            <img src="images/member5.jpg" alt="Member 5" class="member-image">
+            <img src="../static/images/member5.jpg" alt="Member 5" class="member-image">
             <div class="member-details">
-                <h3>Member 5 Name</h3>
-                <p><strong>Major:</strong> Software Engineering</p>
-                <p>I specialize in web application development, ensuring our machine learning models are accessible through user-friendly interfaces.</p>
+                <h3>Alan Chen</h3>
+                <p><strong>Role:</strong> Quality Assurance Engineer</p>
+                <p>My responsibility is to ensure that our web applications and machine learning models are tested thoroughly before deployment. I focus on functionality, user experience, and system stability.</p>
+                <div class="contact-links">
+                    <a href="https://linkedin.com/in/member5" target="_blank">LinkedIn</a>
+                    <a href="mailto:member5@example.com">Email</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 6 -->
+        <div class="team-member">
+            <img src="../static/images/member5.jpg" alt="Member 6" class="member-image">
+            <div class="member-details">
+                <h3>Imran Abdul Kader</h3>
+                <p><strong>Role:</strong> Security Specialist</p>
+                <p>I work on ensuring that all the data we use and the interfaces we create are secure. My primary focus is on data privacy and protecting our systems from external threats, making sure our solutions are compliant with industry standards.</p>
                 <div class="contact-links">
                     <a href="https://linkedin.com/in/member5" target="_blank">LinkedIn</a>
                     <a href="mailto:member5@example.com">Email</a>

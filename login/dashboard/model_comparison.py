@@ -28,7 +28,7 @@ class ModelComparisonDashboard:
     def build(self):
         return dbc.Container([
             dbc.Row([
-                html.Div("ML model analytics platform",className="text-primary text-center fs-3"),
+                html.Div("ML Model Analytics Platform",className="text-primary text-center fs-3"),
                 dcc.Store(id='date_range', storage_type='session'),
                 dcc.Store(id='df_size', storage_type='session')
             ]),
