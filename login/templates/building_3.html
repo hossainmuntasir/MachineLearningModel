@@ -6,17 +6,18 @@
         <title>Building 3</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../static/styles.css">
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </head>
     <body>
          <!-- Navigation Bar -->
          <div class="navbar">
             <a class="navbar" href="#">Hello, {{ session.username }}!</a>
-            <a href="/index">Home</a>
-            <a href="/model-comparison">Model Evaluation</a>
-            <a href="/building-1">Building 1</a>
-            <a href="/building-2">Building 2</a>
-            <a href="/building-3">Building 3</a>
-            <a href="/about_us">About us</a>
+            <a href="/index" class="home">Home</a>
+            <a href="/model-comparison" class="model_comparison">Model Evaluation</a>
+            <a href="/building-1" class="building_1">Building 1</a>
+            <a href="/building-2" class="building_2">Building 2</a>
+            <a href="/building-3" class="building_3">Building 3</a>
+            <a href="/about_us"   class="about_us">About us</a>
             <a href="{{ url_for('logout') }}" class="btn">Logout</a>
           </div>
         <iframe src="/dashboard3/" id="building3" width="100%" height="750px" style="border:none;"></iframe>
