@@ -314,3 +314,9 @@ body {
 }
 
 
+.activeLink{
+    background : linear-gradient(135deg, #2e8b57, #007acc);
+    color: #fff;
+    border-radius: 32px;
+    transition: 0.3s;
+}
