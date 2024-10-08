@@ -32,13 +32,16 @@ class ModelComparisonDashboard:
                 dcc.Store(id='date_range', storage_type='session'),
                 dcc.Store(id='df_size', storage_type='session')
             ]),
+            html.Div("Feature Impact & Prediction Performance",className='text-primary text-left fs-1'),
             dbc.Row([
                 html.Br(style={'background-color':'black'}),
                 dbc.Col([
-                    html.H2('Feature Importance')
+                    html.H2('Feature Importance'),
+                    html.P("Shows which data features have the biggest impact on a model's predictions.")
                 ],width=8),
                         dbc.Col([
-                    html.H2('Confusion Matrix')
+                    html.H2('Confusion Matrix'),
+                    html.P("Shows how well a model's predictions match the actual outcomes, highlighting where it gets things right or wrong.")
                 ],width=4),
             ]),
             dbc.Row([
@@ -51,12 +54,12 @@ class ModelComparisonDashboard:
                 html.Br(),
             ]),
             dbc.Row([
-                html.Br(),
+                html.P("How to interact with graphs: Use your mouse to select the data you want to zoom in on, and double-click to reset the zoom.",style={'color':'#34e5eb'}),
             ]),
-            
+            html.Div("Zone-Wise Prediction Performance",className='text-primary text-left fs-1'),
             dbc.Row([
                 dbc.Col([
-                    html.H2('Building Data')
+                    html.H2('Model prediction analysis')
                 ],width=9),
             ]),
             dbc.Row([
