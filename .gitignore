@@ -1,6 +1,6 @@
 # Some of the random forest model files are very big
-mlmodels/output/models/randomforest*.joblib
-!mlmodels/output/models/randomforest_building[12]_tuned.joblib
+#mlmodels/output/models/randomforest*.joblib
+#!mlmodels/output/models/randomforest_building[12]_tuned.joblib
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
