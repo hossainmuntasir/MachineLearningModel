@@ -50,7 +50,7 @@ class ConfusionMatrixCreator:
 
         # Update layout
         fig.update_layout(
-            width=500,
+#            width=500,
             height=400,
             # title='<b>Confusion Matrix</b>',
             margin=dict(t=10,l=10,r=10,b=10), 

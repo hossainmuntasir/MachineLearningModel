@@ -34,7 +34,6 @@ class ModelComparisonDashboard:
             ]),
             html.Div("Feature Impact & Prediction Performance",className='text-primary text-left fs-1'),
             dbc.Row([
-                html.Br(style={'background-color':'black'}),
                 dbc.Col([
                     html.H2('Feature Importance'),
                     html.P("Shows which data features have the biggest impact on a model's predictions.")
