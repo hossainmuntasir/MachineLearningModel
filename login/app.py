@@ -85,40 +85,40 @@ def register():
 
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', title="Machine Learning Model")
 
 
 @app.route('/model-comparison')
 def model_comparison():
     if "username" not in session:
         return redirect('/login')
-    return render_template('model_comparison.html')
+    return render_template('model_comparison.html', title="Model Comparison")
 
 
 @app.route('/building-1')
 def building_1():
     if "username" not in session:
         return redirect('/login')
-    return render_template('building_1.html')
+    return render_template('building_1.html', title="Building 1")
 
 
 @app.route('/building-2')
 def building_2():
     if "username" not in session:
         return redirect('/login')
-    return render_template('building_2.html')
+    return render_template('building_2.html', title="Building 2")
 
 
 @app.route('/building-3')
 def building_3():
     if "username" not in session:
         return redirect('/login')
-    return render_template('building_3.html')
+    return render_template('building_3.html', title="Building 3")
 
 
 @app.route('/about_us')
 def about_us():
-    return render_template('aboutus.html')
+    return render_template('aboutus.html', title="About Us")
 
 
 if __name__ == '__main__':
