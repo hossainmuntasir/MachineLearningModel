@@ -77,7 +77,8 @@ def register():
             hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
             cursor.execute('INSERT INTO accounts VALUES (NULL, % s, % s, % s)', (username, hashed_password, email,))
             mysql.connection.commit()
-            msg = 'You have successfully registered!'
+            msg = 'You have successfully registered!, Please Login'
+            return render_template('login.html', msg=msg)
     elif request.method == 'POST':
         msg = 'Please fill out the form!'
     return render_template('register.html', msg=msg)
