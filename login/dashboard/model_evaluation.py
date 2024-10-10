@@ -41,6 +41,9 @@ class ModelEvaluationDashboard:
                     dcc.Graph(id="pie-chart", figure=self.initial_pie.fig, style={"height": "300px"})
                 ], width=3)
             ]),
+            dbc.Row([
+                html.P("How to interact with graphs: Use your mouse to select the data you want to zoom in on, and double-click to reset the zoom.",style={'color':'#34e5eb'})
+            ]),
             html.Br(),
             dbc.Row([
                 dbc.Col([
@@ -50,8 +53,11 @@ class ModelEvaluationDashboard:
                     dbc.Row([
                         html.Div(                        
                             dbc.Table([
-                                html.Thead(html.Tr([html.Th('Total Usage (hours)'), html.Th('Predicted Usage (hours)')])),
-                                html.Tbody(html.Tr([html.Td(id='bar_total'), html.Td(id='bar_predicted')])),
+                                html.Thead(html.Tr([html.Th(""),html.Th('Total Usage'), html.Th('Predicted Usage')])),
+                                html.Tbody([
+                                    html.Tr([html.Th("Hours"),html.Td(id='bar_total'), html.Td(id='bar_predicted')]),
+                                    html.Tr([html.Th("Costs ($)"),html.Td(id="total_cost"),html.Td(id="predicted_cost")])
+                                ]),
                             ], color='secondary', bordered=True, id='table', size='lg'
                             ), id='table_wrapper'
                         )
@@ -98,7 +104,9 @@ class ModelEvaluationDashboard:
              Output("line-chart", "figure"),
              Output("pie-chart", "figure"),
              Output('bar_total', 'children'),
-             Output('bar_predicted', 'children')],
+             Output('bar_predicted', 'children'),
+             Output("total_cost","children"),
+             Output("predicted_cost","children")],
             [Input("agg-type", "value"),
              Input('bar-graph', 'clickData'),
              Input("date-picker-range", 'start_date'),
@@ -133,7 +141,7 @@ class ModelEvaluationDashboard:
                         t.marker.opacity = 0.6
                         t.marker.line.width = 0.5
 
-            return updated_bar, updated_line, updated_pie, bar_vals[0], bar_vals[1]
+            return updated_bar, updated_line, updated_pie, bar_vals[0], bar_vals[1], round(bar_vals[0]*60,2), round(bar_vals[1]*60,2)
 
     def run(self):
         self.app.run_server(debug=True, port=8000)

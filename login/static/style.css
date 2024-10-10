@@ -15,7 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #2e8b57, #007acc); /* Apply the gradient background */
+  background: linear-gradient(135deg, #2e8b57, #007acc); 
   color: #fff;
 }
 
@@ -99,3 +99,20 @@ p.bottom a {
 p.bottom a:hover {
   text-decoration: underline;
 }
+.navbar-left {
+  display: flex;
+  align-items: center; 
+}
+
+.logo-top {
+  display: flex;
+  flex-direction: column; 
+  align-items: top; 
+  margin-left: 80px;
+  margin-right: 80px;
+  width: 300px;  
+  height: auto;
+}
+
+
+
