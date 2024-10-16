@@ -1,1 +1,1 @@
-from .grid_search_model import GridSearchDecisionTree, GridSearchRandomForest, SCORES
+from .grid_search_model import GridSearchDecisionTree, GridSearchRandomForest, GridSearchHistBoost, SCORES

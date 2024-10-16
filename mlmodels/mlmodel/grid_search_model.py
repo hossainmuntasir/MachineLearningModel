@@ -8,7 +8,7 @@ import numpy as np
 from sklearn.model_selection import ParameterGrid
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, HistGradientBoostingClassifier
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score, matthews_corrcoef, average_precision_score
 from sklearn.pipeline import make_pipeline
 from sklearn.compose import make_column_transformer
@@ -290,6 +290,51 @@ class GridSearchDecisionTree(GridSearchModel):
         x_train = self._model[0].transform(x_train)
         ccp_alphas = self._model[-1].cost_complexity_pruning_path(x_train, y_train).ccp_alphas
         return {"ccp_alpha": np.unique(ccp_alphas)}
+
+class GridSearchHistBoost(GridSearchModel):
+    OUTPUT_FOLDER = Path("output/histgb")
+
+    def __init__(self, save_path: str | Path = None, n_fits=1, **base_params):
+        super().__init__(save_path, n_fits, **base_params)
+        if "categorical_features" not in base_params:
+            self._model[-1].set_params(categorical_features = ["Zone_name"])
+            self._base_params["categorical_features"] = ["Zone_name"]
+
+    @property
+    def _base(self):
+        return HistGradientBoostingClassifier
+
+    @property
+    def _extra_columns(self) -> dict[str, Callable[[BaseEstimator], Any]]:
+        return {}
+    
+    @property
+    def _transform_layers(self) -> list[TransformerMixin]:
+        # HistGradientBoostingClassifier has built-in handling of categorical data
+        return []
+
+    @property
+    def _best_params_filter(self) -> dict[str, Literal["min", "max"]]:
+        return {
+            "max_leaf_nodes": "min"
+        }
+
+    def _search_params(self, x_train, y_train):
+        tree = DecisionTreeClassifier(random_state=self._random_state)
+        transform = make_column_transformer(
+            (TargetEncoder(random_state=self._random_state), ["Zone_name"]), 
+            remainder="passthrough"
+        )
+        pipeline = make_pipeline(transform, tree)
+        pipeline.fit(x_train, y_train)
+        nodes = tree.get_n_leaves()
+        start = nodes // 16
+        if start == 0:
+            start = 1
+        stop = nodes // 4 + 1
+        if stop <= start:
+            stop = start + 1
+        return {"max_leaf_nodes": list(range(start, stop))}
 
 class GridSearchRandomForest(GridSearchModel):
     OUTPUT_FOLDER = Path("output/random_forest")
