@@ -89,82 +89,82 @@ def index():
 
 @app.route('/model-comparison')
 def model_comparison():
-    # if "username" not in session:
-    #     return redirect('/login')
+    if "username" not in session:
+        return redirect('/login')
     return render_template('model_comparison.html', title="Model Comparison")
 
 @app.route('/model-comparison-rfc1')
 def model_comparison_rfc1():
-    # if "username" not in session:
-    #     return redirect('/login')
+    if "username" not in session:
+        return redirect('/login')
     return render_template('model_comparison_rfc1.html', title="Model Comparison")
 
 @app.route('/model-comparison-rfc2')
 def model_comparison_rfc2():
-    # if "username" not in session:
-    #     return redirect('/login')
+    if "username" not in session:
+        return redirect('/login')
     return render_template('model_comparison_rfc2.html', title="Model Comparison")
 
 @app.route('/model-comparison-rfc3')
 def model_comparison_rfc3():
-    # if "username" not in session:
-    #     return redirect('/login')
+    if "username" not in session:
+        return redirect('/login')
     return render_template('model_comparison_rfc3.html', title="Model Comparison")
 
 @app.route('/model-comparison-xgb1')
 def model_comparison_xgb1():
-    # if "username" not in session:
-    #     return redirect('/login')
+    if "username" not in session:
+        return redirect('/login')
     return render_template('model_comparison_xgb1.html', title="Model Comparison")
 
 @app.route('/model-comparison-xgb2')
 def model_comparison_xgb2():
-    # if "username" not in session:
-    #     return redirect('/login')
+    if "username" not in session:
+        return redirect('/login')
     return render_template('model_comparison_xgb2.html', title="Model Comparison")
 
 @app.route('/model-comparison-xgb3')
 def model_comparison_xgb3():
-    # if "username" not in session:
-    #     return redirect('/login')
+    if "username" not in session:
+        return redirect('/login')
     return render_template('model_comparison_xgb3.html', title="Model Comparison")
 
 @app.route('/model-comparison-hgb1')
 def model_comparison_hgb1():
-    # if "username" not in session:
-    #     return redirect('/login')
+    if "username" not in session:
+        return redirect('/login')
     return render_template('model_comparison_hgb1.html', title="Model Comparison")
 
 @app.route('/model-comparison-hgb2')
 def model_comparison_hgb2():
-    # if "username" not in session:
-    #     return redirect('/login')
+    if "username" not in session:
+        return redirect('/login')
     return render_template('model_comparison_hgb2.html', title="Model Comparison")
 
 @app.route('/model-comparison-hgb3')
 def model_comparison_hgb3():
-    # if "username" not in session:
-    #     return redirect('/login')
+    if "username" not in session:
+        return redirect('/login')
     return render_template('model_comparison_hgb3.html', title="Model Comparison")
 
 @app.route('/building-1')
 def building_1():
-    # if "username" not in session:
-    #     return redirect('/login')
+    if "username" not in session:
+        return redirect('/login')
     return render_template('building_1.html', title="Building 1")
 
 
 @app.route('/building-2')
 def building_2():
-    # if "username" not in session:
-    #     return redirect('/login')
+    if "username" not in session:
+        return redirect('/login')
     return render_template('building_2.html', title="Building 2")
 
 
 @app.route('/building-3')
 def building_3():
-    # if "username" not in session:
-    #     return redirect('/login')
+    if "username" not in session:
+        return redirect('/login')
     return render_template('building_3.html', title="Building 3")
 
 
