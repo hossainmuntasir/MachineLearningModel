@@ -1,8 +1,11 @@
+import math
 import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
 import datetime
 from sklearn.metrics import confusion_matrix
+from sklearn.pipeline import Pipeline
+import numpy as np
 
 class ConfusionMatrixCreator:
     def __init__(self, df):
@@ -13,8 +16,7 @@ class ConfusionMatrixCreator:
         pass
     
     def update_fig(self):
-        # df = self.df.copy()
-        cm = confusion_matrix(self.df.Fan_status, self.df.Predicted, labels=['On', 'Off'])
+        cm = confusion_matrix(self.df.Fan_status.dropna(), self.df.dropna(subset=['Fan_status']).Predicted, labels=['On', 'Off'])
 
         TP = cm[0][0]
         FP = cm[0][1]
@@ -85,7 +87,14 @@ class FeatureImportanceCreator:
         self.fig = self.update_fig()
     
     def update_fig(self):
-        fis = pd.DataFrame(zip(self.model.feature_names_in_, self.model.feature_importances_), columns=['Features','Score'])
+        if isinstance(self.model, Pipeline):
+            features = self.model.feature_names_in_
+            scores = self.model[1].feature_importances_ if len(self.model) == 2 else [np.nan for _ in features]
+        else:
+            features = self.model.feature_names_in_
+            scores = self.model.feature_importances_
+            
+        fis = pd.DataFrame(zip(features, scores), columns=['Features','Score'])
         fis = fis.sort_values('Score')
         fig = px.bar(fis, x='Score', y='Features', orientation='h')
         fig.update_layout(
@@ -100,6 +109,21 @@ class FeatureImportanceCreator:
                 titlefont=dict(color='white')),
             height=400,
             margin=dict(t=10,l=10,r=10,b=10))
+        
+        if all([math.isnan(v) for v in scores]):
+            fig.add_annotation(
+                xref='paper',
+                yref='paper',
+                x=0.5,
+                y=0.5,
+                showarrow=False,
+                xanchor='center',
+                text='Not Applicable',
+                font=dict(
+                    size=30,
+                    color='white'
+                )
+            )
         
         return fig
 
@@ -468,7 +492,7 @@ class LineChartCreator:
             'week': temp.dt.to_period('W').apply(lambda r: r.start_time).dt.date,
             'month': temp.dt.to_period('M').apply(lambda r: r.start_time).dt.date
         }
-        df = df.groupby(['building_no','Zone_name','Season','Faulty','Fan_status',group_mapping[agg]])[['Fan_time_diff','Predicted']].sum().reset_index().sort_values(by='Datetime')
+        df = df.groupby(['building_no','Zone_name','Season','Fan_status',group_mapping[agg]])[['Fan_time_diff','Predicted']].sum().reset_index().sort_values(by='Datetime')
         
         fig = go.Figure()
             

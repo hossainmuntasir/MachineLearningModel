@@ -9,9 +9,9 @@ import dash
 import plotly.graph_objects as go
 
 class ModelComparisonDashboard:
-    def __init__(self, df, building_no, model, input_server,url_base):
-        self.df = df[df.building_no==building_no]
-
+    def __init__(self, df, model, input_server,url_base):
+        self.df = df
+        
         # Initialize charts
         self.initial_features = FeatureImportanceCreator(model)
         self.initial_confusion_mat = ConfusionMatrixCreator(df)
