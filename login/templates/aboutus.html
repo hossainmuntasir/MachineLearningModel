@@ -1,44 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="../static/styles.css">
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    
-
-  
-</head>
-
-<body>
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <div class="navbar-left">
-            <span>
-                <img src="{{ url_for('static', filename='../static/images/logo.svg') }}" alt="Company Logo 1" class="footer-logo logo-1">&nbsp;&nbsp;
-                <img src="{{ url_for('static', filename='../static/images/logo-long-full.svg') }}" alt="Company Logo 2" class="footer-logo logo-2">&nbsp;
-                <span class="username">Hello, {{ session.username }}!</span>
-            </span>
-        </div>
-        <div class="navbar-right" id="navbarButtons">
-            <a href="/index" class="home">Home</a>
-        <a href="/model-comparison" class="model_comparison">Model Evaluation</a>
-        <a href="/building-1" class="building_1">Building 1</a>
-        <a href="/building-2" class="building_2">Building 2</a>
-        <a href="/building-3" class="building_3">Building 3</a>
-        <a href="/about_us"   class="about_us">About us</a>
-                <a href="{{ url_for('logout') }}" class="btn btn-logout nav-logout">Logout</a>
-        </div>
+{% block content %}
+<div class="container">
+    <h1>About Us</h1>
+    <div class="group-photo">
+        <img src="../static/images/TeamPhoto.jpg" alt="Our Team Photo">
     </div>
-
-    <div class="container">
-        <h1>About Us</h1>
-        <div class="group-photo">
-            <img src="../static/images/TeamPhoto.jpg" alt="Our Team Photo">
-        </div>
-        <p>We are a team of passionate individuals working together to leverage AI and machine learning for building performance optimization. Meet our team:</p>
+    <p>We are a team of passionate individuals working together to leverage AI and machine learning for building performance optimization. Meet our team:</p>
 
         <!-- Team Member 1 -->
         <div class="team-member">
@@ -96,19 +64,19 @@
             </div>
         </div>
 
-        <!-- Team Member 5 -->
-        <div class="team-member">
-            <img src="../static/images/member5.jpg" alt="Member 5" class="member-image">
-            <div class="member-details">
-                <h3>Alan Chen</h3>
-                <p><strong>Role:</strong> Quality Assurance Engineer</p>
-                <p>My responsibility is to ensure that our web applications and machine learning models are tested thoroughly before deployment. I focus on functionality, user experience, and system stability.</p>
-                <div class="contact-links">
-                    <a href="https://linkedin.com/in/member5" target="_blank">LinkedIn</a>
-                    <a href="mailto:103789917@student.swin.edu.au">Email</a>
-                </div>
+    <!-- Team Member 5 -->
+    <div class="team-member">
+        <img src="../static/images/member5.jpg" alt="Member 5" class="member-image">
+        <div class="member-details">
+            <h3>Alan Chen</h3>
+            <p><strong>Role:</strong> Quality Assurance Engineer</p>
+            <p>My responsibility is to ensure that our web applications and machine learning models are tested thoroughly before deployment. I focus on functionality, user experience, and system stability.</p>
+            <div class="contact-links">
+                <a href="https://linkedin.com/in/member5" target="_blank">LinkedIn</a>
+                <a href="mailto:103789917@student.swin.edu.au">Email</a>
             </div>
         </div>
+    </div>
 
         <!-- Team Member 6 -->
         <div class="team-member">
