@@ -1,5 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-<iframe src="/modelcomparison/" id="modelevaluation" width="100%" height="1400px" style="border:none;"></iframe>
+<div class="container row">
+    <select class="form-select col" id="building" aria-label="Building selection">
+        <option selected value="1">Building 1</option>
+        <option value="2">Building 2</option>
+        <option value="3">Building 3</option>
+    </select>
+    <select class="form-select col" id="model" aria-label="Model selection">
+        <option selected value="rfc">Random Forest</option>
+        <option value="xgb">XGBoost</option>
+        <option value="hgb">Histogram-base Gradient Boosting</option>
+    </select>
+</div>
+<iframe src="/modelcomparison_rfc1/" id="modelevaluation" width="100%" height="1400px" style="border:none;"></iframe>
+<script>
+    function refresh_iframe(e) {
+        building = document.getElementById("building").value;
+        model = document.getElementById("model").value;
+        document.getElementById("modelevaluation").src = `/modelcomparison_${model}${building}/`
+    }
+
+    document.getElementById("building").onchange = refresh_iframe;
+    document.getElementById("model").onchange = refresh_iframe;
+    refresh_iframe();
+</script>
 {% endblock content %}
