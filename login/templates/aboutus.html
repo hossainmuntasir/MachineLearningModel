@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+<body>
 <div class="container">
-    <h1>About Us</h1>
+    <h1 style="text-align: center;">About Us</h1>
     <div class="group-photo">
-        <img src="../static/images/TeamPhoto.jpg" alt="Our Team Photo">
+    <img src="../static/images/TeamPhoto.jpg" alt="Our Team Photo">
     </div>
     <p>We are a team of passionate individuals working together to leverage AI and machine learning for building performance optimization. Meet our team:</p>
 
@@ -93,25 +94,8 @@
         </div>
     </div>
 
-    <footer class="text-center"></footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <!-- GitHub Link -->
-                <a href="https://github.com/hossainmuntasir/MachineLearningModel" target="_blank" class= "footer-link">Github</a>
-                </a>
-                <!-- About Us Page Link -->
-                <a href="/about_us" class="footer-link">About Us</a>
-                <!-- Company Link -->
-                <a href="https://piechowskienergy.com/" target="_blank" class="footer-link">Our Company</a>
-            </div>
-            <!-- Logos for Swinburne and Company -->
-            <div class="footer-logos">
-                <img src="../static/images/logo-long-full.svg" alt="Swinburne University Logo" class="footer-logo">
-                <img src="../static/images/logo.svg" alt="Company Logo" class="footer-logo">
-            </div>
-            <p>&copy; Machine Learning Model for Optimising Building Efficiency</p>
-        </div>
-    </footer>
+   
 </body>
 
 </html>
+{% endblock content %}

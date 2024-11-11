@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<body class="modelcomparison"> 
 <div class="container row">
     <select class="form-select col" id="building" aria-label="Building selection">
         <option selected value="1">Building 1</option>
@@ -25,4 +26,5 @@
     document.getElementById("model").onchange = refresh_iframe;
     refresh_iframe();
 </script>
+</body>
 {% endblock content %}

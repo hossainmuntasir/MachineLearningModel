@@ -259,7 +259,10 @@ body {
     width: 80%;
     margin: 0 auto;
     padding: 2em 0;
-    
+}
+.modelcomparison {
+    background-color: #0e0e0f;
+
 }
 
 .group-photo {
