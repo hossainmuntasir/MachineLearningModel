@@ -30,3 +30,46 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector(".model_comparison").classList.add("activeLink");
     }
 });
+// function fetchPassword() {
+//     const username = document.getElementById('username').value;
+//     if (username) {
+//         fetch(`/get-password?username=${username}`)
+//             .then(response => response.json())
+//             .then(data => {
+//                 document.getElementById('password').value = data.password;
+//             });
+//     }
+// }
+function fillPassword() {
+    var username = document.getElementById('usernameSelect').value;
+    var passwordField = document.getElementById('password');
+    var usernameField = document.getElementById('username');  // Input field for the username
+
+    // Hardcoded passwords for each username
+    // Change this to  your username and password created
+    var passwords = {
+        "admin1": "EchoEcho",  // user1's password or Building Manager 1
+        "admin2": "EchoEcho",  // user2's password or Building Manager 2
+        "admin3": "EchoEcho",  // user3's password or Building Manager 3
+        "adminr": "EchoEcho"   // admin's password or Administrator
+    };
+
+    // If a valid username is selected, auto-fill the password field
+    if (passwords[username]) {
+        usernameField.value = username; // Autofill the username in the text input
+        passwordField.value = passwords[username]; // Autofill the password field
+    } else {
+        usernameField.value = '';
+        passwordField.value = ''; 
+    }
+}
+function validateUsernameSelection() {
+    const usernameSelect = document.getElementById('usernameSelect');
+
+    // Show error message if no valid username is selected
+    if (!usernameSelect.value) {
+        document.querySelector('.msg').innerText = 'Please select a valid username.';
+        return false;
+    }
+    return true; 
+}

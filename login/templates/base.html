@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar
     <div class="navbar">
         <div class="navbar-left">
             <span>
@@ -30,7 +30,40 @@
         <a href="/about_us"   class="about_us">About us</a>
                 <a href="{{ url_for('logout') }}" class="btn btn-logout nav-logout">Logout</a>
         </div>
+    </div> -->
+    <!-- Navigation Bar -->
+<div class="navbar">
+    <div class="navbar-left">
+        <span>
+            <img src="{{ url_for('static', filename='../static/images/logo.svg') }}" alt="Company Logo 1" class="footer-logo logo-1">&nbsp;&nbsp;
+            <img src="{{ url_for('static', filename='../static/images/logo-long-full.svg') }}" alt="Company Logo 2" class="footer-logo logo-2">&nbsp;
+            <span class="username">Hello, {{ session.username }}!</span>
+        </span>
     </div>
+    <div class="navbar-right" id="navbarButtons">
+        <a href="/index" class="home">Home</a>
+
+        {% if session.role == 'admin' or session.role == 'user1' %}
+            <a href="/building-1" class="building_1">Building 1</a>
+        {% endif %}
+        
+        {% if session.role == 'admin' or session.role == 'user2' %}
+            <a href="/building-2" class="building_2">Building 2</a>
+        {% endif %}
+        
+        {% if session.role == 'admin' or session.role == 'user3' %}
+            <a href="/building-3" class="building_3">Building 3</a>
+        {% endif %}
+
+        {% if session.role == 'admin' %}
+            <a href="/model-comparison" class="model_comparison">Model Comparison</a>
+        {% endif %}
+
+        <a href="/about_us" class="about_us">About Us</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-logout nav-logout">Logout</a>
+    </div>
+</div>
+
 
     {% block content %}
     <h1>Welcome to {{ title }}!</h1>

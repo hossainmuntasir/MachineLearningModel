@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
         <div class=logo-top >
         <img src="{{ url_for('static', filename='../static/images/logo.svg') }}" alt="Company Logo 1" class="footer-logo logo-1">               
-        </div>              
+          </div>              
     </head>
     <body></br></br></br></br></br>
         <div align="center">
@@ -15,12 +15,19 @@
                 <h1 class="word">Register</h1>
              </div></br></br></br>
             <h2 class="word">
-                <form action="{{ url_for('register') }}" method="post">
+                <form action="{{ url_for('register') }}" method="post" onsubmit="return validateUsernameSelection()">
                   <div class="msg">{{ msg }}</div>
                     <input id="username" name="username" type="text" placeholder="Enter Your Username" class="textbox"/></br></br>
                     <input id="email" name="email" type="text" placeholder="Enter Your Email ID" class="textbox"/></br></br>
                     <input id="password" name="password" type="password" placeholder="Enter Your Password" class="textbox"/></br></br>
-
+                    <select name="role" class="textbox">
+                      <option value="" disabled selected>Select Building Access</option>
+                      <option value="admin">Administrator</option>
+                      <option value="user1">User 1 (Building 1 Access)</option>
+                      <option value="user2">User 2 (Building 2 Access)</option>
+                      <option value="user3">User 3 (Building 3 Access)</option>
+                  </select>
+                  </br></br>
                     <input type="submit" class="btn" value="Sign Up"></br>
                 </form>
             </h2>

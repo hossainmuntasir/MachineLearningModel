@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
@@ -36,11 +36,14 @@ def login():
             session['loggedin'] = True
             session['id'] = account['id']
             session['username'] = account['username']
-            msg = 'Logged in successfully!'
+            session['role'] = account['role']
+            msg = 'Logged in successfully!' 
+            # print("User role:", account['role'])
             return redirect('/index')
         else:
             msg = 'Incorrect username / password!'
     return render_template('login.html', msg=msg)
+    
 
 
 
@@ -55,10 +58,11 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     msg = ''
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form and 'role' in request.form:
         username = request.form['username']
         password = request.form['password']
         email = request.form['email']
+        role = request.form['role']
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM accounts WHERE username = % s', (username,))
         account = cursor.fetchone()
@@ -75,7 +79,7 @@ def register():
         else:
             # Hash the password before storing
             hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
-            cursor.execute('INSERT INTO accounts VALUES (NULL, % s, % s, % s)', (username, hashed_password, email,))
+            cursor.execute('INSERT INTO accounts VALUES (NULL, % s, % s, % s, % s)', (username, hashed_password, email, role))
             mysql.connection.commit()
             msg = 'You have successfully registered!, Please Login'
             return render_template('login.html', msg=msg)
@@ -84,13 +88,33 @@ def register():
     return render_template('register.html', msg=msg)
 
 @app.route('/index')
+# def index():
+#     return render_template('index.html', title="Machine Learning Model")
 def index():
+    # Check if the user is logged in
+    # if 'username' not in session:
+    #     return redirect('/login')
+
+    # Get the role of the logged-in user
+    user_role = session.get('role')
+
+    # Check if the user has the correct role to access the index page
+    if user_role not in ['admin', 'user2','user3', 'user1']:  # Example: Only 'admin' can access the index page
+        msg = 'Insufficient Privlage'
+        return render_template('login.html', msg=msg)
+
+    # Render the index page if role is valid
     return render_template('index.html', title="Machine Learning Model")
 
 @app.route('/model-comparison')
 def model_comparison():
     if "username" not in session:
         return redirect('/login')
+    user_role = session.get('role')
+    # Check if the user has the correct role to access the index page
+    if user_role != 'admin':  # Only 'admin' can access the index page
+        msg = 'Insufficient Privlage'
+        return render_template('login.html', msg=msg)
     return render_template('model_comparison.html', title="Model Comparison")
 
 @app.route('/model-comparison-rfc1')
@@ -151,6 +175,11 @@ def model_comparison_hgb3():
 def building_1():
     if "username" not in session:
         return redirect('/login')
+    user_role = session.get('role')
+    # Check if the user has the correct role to access the index page
+    if user_role not in ['admin', 'user1']:  # Only 'admin' can access the index page
+        msg = 'Insufficient Privlage'
+        return render_template('login.html', msg=msg)
     return render_template('building_1.html', title="Building 1")
 
 
@@ -158,6 +187,12 @@ def building_1():
 def building_2():
     if "username" not in session:
         return redirect('/login')
+    user_role = session.get('role')
+
+    # Check if the user has the correct role to access the index page
+    if user_role not in ['admin', 'user2']:  # Only 'admin' can access the index page
+        msg = 'Insufficient Privlage'
+        return render_template('login.html', msg=msg)
     return render_template('building_2.html', title="Building 2")
 
 
@@ -165,6 +200,12 @@ def building_2():
 def building_3():
     if "username" not in session:
         return redirect('/login')
+    user_role = session.get('role')
+
+    # Check if the user has the correct role to access the index page
+    if user_role not in ['admin', 'user3']:  # Only 'admin' can access the index page
+        msg = 'Insufficient Privlage'
+        return render_template('login.html', msg=msg)
     return render_template('building_3.html', title="Building 3")
 
 
@@ -172,6 +213,16 @@ def building_3():
 def about_us():
     return render_template('aboutus.html', title="About Us")
 
+
+# @app.route('/get-password')
+# def get_password():
+#     username = request.args.get('username')
+#     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+#     cursor.execute('SELECT password FROM accounts WHERE username = %s', (username,))
+#     account = cursor.fetchone()
+#     if account:
+#         return jsonify({'password': account['password']})
+#     return jsonify({'password': ''})
 
 if __name__ == '__main__':
     app.run(debug=True)
