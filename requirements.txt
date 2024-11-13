@@ -1,9 +1,16 @@
 notebook
 seaborn
-scikit-learn=1.5.2
+scikit-learn==1.5.2
 openpyxl
 pyarrow
 plotly
 tqdm
 dash-bootstrap-components
 flask_mysqldb
+xgboost
+Werkzeug
+flask
+dash
+dash-bootstrap-components
+joblib
+numpy==2.0.2

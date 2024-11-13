@@ -48,10 +48,10 @@ function fillPassword() {
     // Hardcoded passwords for each username
     // Change this to  your username and password created
     var passwords = {
-        "admin1": "EchoEcho",  // user1's password or Building Manager 1
-        "admin2": "EchoEcho",  // user2's password or Building Manager 2
-        "admin3": "EchoEcho",  // user3's password or Building Manager 3
-        "adminr": "EchoEcho"   // admin's password or Administrator
+        "Building1manager": "EchoEcho",  // user1's password or Building Manager 1
+        "Building2manager": "EchoEcho",  // user2's password or Building Manager 2
+        "Building3manager": "EchoEcho",  // user3's password or Building Manager 3
+        "admin": "EchoEcho"   // admin's password or Administrator
     };
 
     // If a valid username is selected, auto-fill the password field

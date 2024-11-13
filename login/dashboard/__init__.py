@@ -15,7 +15,7 @@ def create_modelevaluation_dashboards(server):
 def create_modelcomparison_dashboard(server):
     def load_dashboard(df, model, server, url, column_name):
         df['Predicted'] = df[column_name]
-        return ModelComparisonDashboard(df, model, server, url)
+        return ModelComparisonDashboard(df.dropna(subset=['x','y']), model, server, url)
     
     df1 = pd.read_parquet("dashboard/building1_predicted.parquet")
     df2 = pd.read_parquet("dashboard/building2_predicted.parquet")
